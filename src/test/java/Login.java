@@ -1,6 +1,11 @@
 import org.openqa.selenium.By;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class Login {
+    @Test
     public void loginToPage() {
 
 

@@ -69,6 +69,15 @@ public class FunctionalTest {
         goToPage("http://automationpractice.com/index.php?controller=order");
         assertTrue((driver.findElement(By.id("icon-trash")).isDisplayed()));
     }
+    @Test
+    public void  LoginToPage() {
+
+        driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+        driver.findElement(By.id("email")).sendKeys("j1138480@nwytg.com");
+        driver.findElement(By.id("passwd")).sendKeys("qwerty");
+        driver.findElement(By.xpath("//*[@id=\"SubmitLogin\"]/span")).click();
+
+    }
 
 
     }
