@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.junit.Test;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,6 +20,10 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class FunctionalTest {
+
+    private HomePage homePageObject;
+    private CartObjects cartObjectsObject;
+    private Login loginPageObject;
     WebDriver driver;
 
     @BeforeClass
@@ -31,6 +36,27 @@ public class FunctionalTest {
     public void setup() {
 
         driver = new ChromeDriver();
+        this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        this.cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+        this.loginPageObject = PageFactory.initElements(this.driver, Login.class);
+       
+
+
+    }
+
+
+    public void  loginToPage() {
+
+
+        Login nowylogin = new Login(this.driver);
+
+
+
+    }
+
+
+    public void goToPage(String strona) {
+        driver.get(strona);
     }
 
     @After
@@ -38,9 +64,7 @@ public class FunctionalTest {
         driver.quit();
     }
 
-    public void goToPage(String strona) {
-        driver.get(strona);
-    }
+
 
     @Test
     public void  returnTrueIfGoToCartIsSuccessfull() {
@@ -69,16 +93,20 @@ public class FunctionalTest {
         goToPage("http://automationpractice.com/index.php?controller=order");
         assertTrue((driver.findElement(By.id("icon-trash")).isDisplayed()));
     }
+
+
     @Test
-    public void  loginToPage() {
+    public void  returnTrueIfProductQuantityAddDeleteWorks() {
+        CartObjects quantityTest = new CartObjects(this.driver);
+        goToPage("http://automationpractice.com/index.php?controller=order");
 
-       /* driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        driver.findElement(By.id("email")).sendKeys("j1138480@nwytg.com");
-        driver.findElement(By.id("passwd")).sendKeys("qwerty");
-        driver.findElement(By.xpath("//*[@id=\"SubmitLogin\"]/span")).click(); */
+        int quantityBefore = quantityTest.checkProductQuantityInSummaryTab();
+        quantityTest.addProductQuantityInSummaryTab();
+         assertEquals(((quantityTest.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
+         quantityTest.substractProductQuantityInSummaryTab();
+        assertEquals(((quantityTest.checkProductQuantityInSummaryTab()) > quantityBefore), 1);
 
-       Login nowylogin = new Login();
-       nowylogin.loginToPage1();
+
 
     }
 
