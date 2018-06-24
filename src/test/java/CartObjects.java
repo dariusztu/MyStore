@@ -1,7 +1,14 @@
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class cartObjects {
+public class CartObjects {
+
+    WebDriver driver;
+
+    public CartObjects(WebDriver driver) {
+        this.driver = driver;
+    }
 
     // Switching between tabs
 
@@ -34,7 +41,7 @@ public class cartObjects {
     private WebElement addbutton;
 
     @FindBy(css=".icon-trash")
-    private WebElement deletebutton;
+    private WebElement substractButton;
 
     //Address objects
 
@@ -123,37 +130,83 @@ public class cartObjects {
     @FindBy(css="#alias")
     private WebElement AddNewAddressAddressForFutureReference;
 
+    @FindBy(css="#submitAddress")
+    private WebElement saveButtonAtAddNewAddress;
+
+    @FindBy(css=".btn-defaul > span:nth-child(1)")
+    private WebElement backToYourAddressesButton;
+
+    @FindBy(css="#address_invoice > li:nth-child(7) > a:nth-child(1) > span:nth-child(1)")
+    private WebElement updateYourBillingAddressButton;
+
+    @FindBy(css=".cart_quantity_input")
+    private WebElement productQuantityNumberInSummary;
+
     // Add new Address sendKeys
 
-    public void AddNewAddressFirstNameFill(String AddNewAddressFirstName) {
+    public void addNewAddressFirstNameFill(String AddNewAddressFirstName) {
         this.AddNewAddressFirstName.sendKeys(AddNewAddressFirstName);
     }
 
-    public void AddNewAddressLastNameFill(String AddNewAddressLastName) {
+    public void addNewAddressLastNameFill(String AddNewAddressLastName) {
         this.AddNewAddressLastName.sendKeys(AddNewAddressLastName);
     }
 
-    public void AddNewAddressLastCompanyFill(String AddNewAddressCompany) {
+    public void addNewAddressLastCompanyFill(String AddNewAddressCompany) {
         this.AddNewAddressCompany.sendKeys(AddNewAddressCompany);
     }
 
-    public void AddNewAddressLastAddressFill(String AddNewAddressAddress) {
+    public void addNewAddressLastAddressFill(String AddNewAddressAddress) {
         this.AddNewAddressAddress.sendKeys(AddNewAddressAddress);
     }
 
-    public void AddNewAddressLastAddressLine2Fill(String AddNewAddressAddressLine2) {
+    public void addNewAddressLastAddressLine2Fill(String AddNewAddressAddressLine2) {
         this.AddNewAddressAddressLine2.sendKeys(AddNewAddressAddressLine2);
     }
 
-    public void AddNewAddressCityFill(String AddNewAddressCity) {
+    public void addNewAddressCityFill(String AddNewAddressCity) {
         this.AddNewAddressCity.sendKeys(AddNewAddressCity);
     }
 
-    public void AddNewAddressStateFill(String AddNewAddressState) {
+    public void addNewAddressStateFill(String AddNewAddressState) {
         this.AddNewAddressState.sendKeys(AddNewAddressState);
     }
 
-    public void AddNewAddressZipPostalCodeFill(String AddNewAddressZipPostalCode) {
+    public void addNewAddressZipPostalCodeFill(String AddNewAddressZipPostalCode) {
         this.AddNewAddressZipPostalCode.sendKeys(AddNewAddressZipPostalCode);
     }
+
+    public void addNewAddress() {
+        this.addNewAddress.click();
+    }
+
+    public void acceptNewAddress() {
+        this.saveButtonAtAddNewAddress.click();
+    }
+
+    public void goBackToYourAddressess() {
+        this.backToYourAddressesButton.click();
+    }
+
+    public void updateYourBillingAddress() {
+        this.updateYourBillingAddressButton.click();
+    }
+
+    public void acceptTermsOfServiceAtShippingTab() {
+        this.termsOfServiceCheck.click();
+    }
+
+    public void addProductQuantityInSummaryTab() {
+        this.addbutton.click();
+    }
+
+    public void substractProductQuantityInSummaryTab() {
+        this.substractButton.click();
+    }
+
+    public int checkProductQuantityInSummaryTab() {
+        int productQuantity = Integer.getInteger(this.productQuantityNumberInSummary.getText());
+        return productQuantity;
+    }
+
 }

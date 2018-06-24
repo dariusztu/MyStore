@@ -39,7 +39,8 @@ public class FunctionalTest {
         this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
         this.cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
         this.loginPageObject = PageFactory.initElements(this.driver, Login.class);
-       
+
+
 
 
     }
@@ -97,16 +98,27 @@ public class FunctionalTest {
 
     @Test
     public void  returnTrueIfProductQuantityAddDeleteWorks() {
-        CartObjects quantityTest = new CartObjects(this.driver);
+
         goToPage("http://automationpractice.com/index.php?controller=order");
+        // add product to Cart here
+        int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
+        cartObjectsObject.addProductQuantityInSummaryTab();
+         assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
+        cartObjectsObject.substractProductQuantityInSummaryTab();
+        assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 1);
 
-        int quantityBefore = quantityTest.checkProductQuantityInSummaryTab();
-        quantityTest.addProductQuantityInSummaryTab();
-         assertEquals(((quantityTest.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
-         quantityTest.substractProductQuantityInSummaryTab();
-        assertEquals(((quantityTest.checkProductQuantityInSummaryTab()) > quantityBefore), 1);
+    @Test
+            public void returnTrueIfDeliveryAddressAddProperly() {
+            // go through adding product->summary here
+            cartObjectsObject.addNewAddress();
+            cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
+            cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
+            cartObjectsObject.addNewAddressLastCompanyFill("Google");
+            cartObjectsObject.addNewAddressLastAddressFill("Abc 2");
+            cartObjectsObject.addNewAddressLastAddressLine2Fill("Okg 3");
+            cartObjectsObject.addNewAddressCityFill("Warsaw");
 
-
+        }
 
     }
 
