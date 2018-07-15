@@ -24,7 +24,7 @@ public class FunctionalTest {
     private HomePage homePageObject;
     private CartObjects cartObjectsObject;
     private Login loginPageObject;
-    WebDriver driver;
+    private WebDriver driver;
 
     @BeforeClass
     public static void pathSetup() {
@@ -36,9 +36,9 @@ public class FunctionalTest {
     public void setup() {
 
         driver = new ChromeDriver();
-        this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-        this.cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
-        this.loginPageObject = PageFactory.initElements(this.driver, Login.class);
+      //  this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+      //  this.cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+      //  this.loginPageObject = PageFactory.initElements(this.driver, Login.class);
 
 
 
@@ -69,7 +69,8 @@ public class FunctionalTest {
 
     @Test
     public void  returnTrueIfGoToCartIsSuccessfull() {
-            goToPage("http://automationpractice.com/index.php");
+        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+            //TODO goToHomePage
             driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
             assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order"));
            assertTrue((driver.getTitle()).equals("Order - My Store"));
@@ -77,6 +78,10 @@ public class FunctionalTest {
 
     @Test
     public void  returnTrueIfProceedToCheckOutOpen() {
+        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+
+        //TODO Create pageObject for site below
         goToPage("http://automationpractice.com/index.php?controller=order");
         driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span"));
         assertEquals("Address", driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")).getText());
@@ -91,6 +96,8 @@ public class FunctionalTest {
     }
     @Test
     public void  returnTrueIfDeleteButtonIsClickable() {
+        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
         goToPage("http://automationpractice.com/index.php?controller=order");
         assertTrue((driver.findElement(By.id("icon-trash")).isDisplayed()));
     }
@@ -98,6 +105,8 @@ public class FunctionalTest {
 
     @Test
     public void  returnTrueIfProductQuantityAddDeleteWorks() {
+         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+         cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
 
         goToPage("http://automationpractice.com/index.php?controller=order");
         // add product to Cart here
@@ -109,6 +118,11 @@ public class FunctionalTest {
 
     @Test
             public void returnTrueIfDeliveryAddressAddProperly() {
+
+            homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+            cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+
+            //TODO Add goToPage
             // go through adding product->summary here
             cartObjectsObject.addNewAddress();
             cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
