@@ -101,6 +101,7 @@ public class CartTests {
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
+        loginPageObject = new Login(driver);
         shoppingCartSummaryPageObject.goToPage();
         // add product to Cart here
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
