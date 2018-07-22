@@ -103,7 +103,7 @@ public class CartTests {
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         loginPageObject = new Login(driver);
         shoppingCartSummaryPageObject.goToPage();
-        // add product to Cart here
+        // add product to Cart her  e
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
         cartObjectsObject.addProductQuantityInSummaryTab();
         assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
