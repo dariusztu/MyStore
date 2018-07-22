@@ -68,7 +68,7 @@ public class FunctionalTest {
 
     @Test
     public void returnTrueIfGoToCartIsSuccessfull() {
-        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        homePageObject = new HomePage(driver);
         //TODO goToHomePage
         driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
         assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order"));
@@ -77,7 +77,7 @@ public class FunctionalTest {
 
     @Test
     public void returnTrueIfProceedToCheckOutOpen() {
-        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        homePageObject = new HomePage(driver);
         cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
 
@@ -92,7 +92,7 @@ public class FunctionalTest {
 
     @Test
     public void returnTrueIfDeleteButtonIsClickable() {
-        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         shoppingCartSummaryPageObject.goToPage();
@@ -102,7 +102,7 @@ public class FunctionalTest {
 
     @Test
     public void returnTrueIfProductQuantityAddDeleteWorks() {
-        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage((driver);
         shoppingCartSummaryPageObject.goToPage();
@@ -117,7 +117,7 @@ public class FunctionalTest {
     @Test
     public void returnTrueIfDeliveryAddressAddProperly() {
 
-        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
 
         //TODO Add goToPage
