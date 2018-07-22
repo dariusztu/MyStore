@@ -115,6 +115,7 @@ public class FunctionalTest {
 
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
+        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         shoppingCartSummaryPageObject.goToPage();
         myAccountPageObject = new MyAccountPage(driver);
         loginPageObject = new Login(driver);
