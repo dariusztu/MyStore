@@ -113,15 +113,14 @@ public class FunctionalTest {
     @Test
     public void returnTrueIfDeliveryAddressAddProperly() {
 
+        myAddressesPageObject = new MyAddressesPage(driver);
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
-        shoppingCartSummaryPageObject.goToPage();
         myAccountPageObject = new MyAccountPage(driver);
         loginPageObject = new Login(driver);
-        myAccountPageObject.myAddressesButtonClick();
+        myAddressesPageObject.goToPage();
         myAddressesPageObject.addNewAddressButtonClick();
-        cartObjectsObject.addNewAddress();
         cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
         cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
         cartObjectsObject.addNewAddressLastCompanyFill("Google");
