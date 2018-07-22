@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CartObjects;
 import pages.HomePage;
 import pages.Login;
+import pages.ShoppingCartSummaryPage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -29,11 +30,12 @@ public class FunctionalTest {
     private HomePage homePageObject;
     private CartObjects cartObjectsObject;
     private Login loginPageObject;
+    private ShoppingCartSummaryPage shoppingCartSummaryPageObject;
     private WebDriver driver;
 
     @BeforeClass
     public static void pathSetup() {
-       // System.setProperty("webdriver.chrome.driver", "/home/dariusztu/IdeaProjects/MyStoreTesting/src/test/resources/chromedriver");
+        // System.setProperty("webdriver.chrome.driver", "/home/dariusztu/IdeaProjects/MyStoreTesting/src/test/resources/chromedriver");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -41,21 +43,14 @@ public class FunctionalTest {
     public void setup() {
 
         driver = new ChromeDriver();
-      //  this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-      //  this.cartObjectsObject = PageFactory.initElements(this.driver, pages.pages.CartObjects.class);
-      //  this.loginPageObject = PageFactory.initElements(this.driver, pages.pages.Login.class);
-
-
-
 
     }
 
 
-    public void  loginToPage() {
+    public void loginToPage() {
 
 
         Login nowylogin = new Login(this.driver);
-
 
 
     }
@@ -71,47 +66,43 @@ public class FunctionalTest {
     }
 
 
-
     @Test
-    public void  returnTrueIfGoToCartIsSuccessfull() {
+    public void returnTrueIfGoToCartIsSuccessfull() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-            //TODO goToHomePage
-            driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
-            assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order"));
-           assertTrue((driver.getTitle()).equals("Order - My Store"));
+        //TODO goToHomePage
+        driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
+        assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order"));
+        assertTrue((driver.getTitle()).equals("Order - My Store"));
     }
 
     @Test
-    public void  returnTrueIfProceedToCheckOutOpen() {
+    public void returnTrueIfProceedToCheckOutOpen() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
         cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+        shoppingCartSummaryPageObject = PageFactory.initElements(this.driver, ShoppingCartSummaryPage.class);
 
-        //TODO Create pageObject for site below
-        goToPage("http://automationpractice.com/index.php?controller=order");
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span"));
-        assertEquals("Address", driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")).getText());
+        shoppingCartSummaryPageObject.goToPage();
+
+        assertEquals("Address", shoppingCartSummaryPageObject.addressTextGetText());
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        WebElement proceedToCheckOutButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")));
-        String backgroundColor = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")).getCssValue("background-color");
-        String backgroundColorHex = Color.fromString(backgroundColor).asHex().toUpperCase();
-
-        assertEquals("#000000", backgroundColorHex);
+        assertEquals("#000000", shoppingCartSummaryPageObject.addressTextButtonReturnColor());
     }
+
     @Test
-    public void  returnTrueIfDeleteButtonIsClickable() {
+    public void returnTrueIfDeleteButtonIsClickable() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-        cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+        cartObjectsObject = new CartObjects(driver);
         goToPage("http://automationpractice.com/index.php?controller=order");
         assertTrue((driver.findElement(By.id("icon-trash")).isDisplayed()));
     }
 
 
     @Test
-    public void  returnTrueIfProductQuantityAddDeleteWorks() {
+    public void returnTrueIfProductQuantityAddDeleteWorks() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-        cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+        cartObjectsObject = new CartObjects(driver);
 
         goToPage("http://automationpractice.com/index.php?controller=order");
         // add product to Cart here
@@ -121,23 +112,24 @@ public class FunctionalTest {
         cartObjectsObject.substractProductQuantityInSummaryTab();
         assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 1);
     }
+
     @Test
-            public void returnTrueIfDeliveryAddressAddProperly() {
+    public void returnTrueIfDeliveryAddressAddProperly() {
 
-            homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-            cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        cartObjectsObject = new CartObjects(driver);
 
-            //TODO Add goToPage
-            // go through adding product->summary here
-            cartObjectsObject.addNewAddress();
-            cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
-            cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
-            cartObjectsObject.addNewAddressLastCompanyFill("Google");
-            cartObjectsObject.addNewAddressLastAddressFill("Abc 2");
-            cartObjectsObject.addNewAddressLastAddressLine2Fill("Okg 3");
-            cartObjectsObject.addNewAddressCityFill("Warsaw");
+        //TODO Add goToPage
+        // go through adding product->summary here
+        cartObjectsObject.addNewAddress();
+        cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
+        cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
+        cartObjectsObject.addNewAddressLastCompanyFill("Google");
+        cartObjectsObject.addNewAddressLastAddressFill("Abc 2");
+        cartObjectsObject.addNewAddressLastAddressLine2Fill("Okg 3");
+        cartObjectsObject.addNewAddressCityFill("Warsaw");
 
-        }
+    }
 
 }
 
