@@ -1,5 +1,6 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -27,8 +28,8 @@ public class SendContactUsFormTest {
 
     @BeforeClass
     public static void pathSetup() {
-        System.setProperty("webdriver.chrome.driver", "/home/michalmojek/IdeaProjects/MyStore2/src/test/resources/chromedriver");
-
+        //System.setProperty("webdriver.chrome.driver", "/home/michalmojek/IdeaProjects/MyStore2/src/test/resources/chromedriver");
+        WebDriverManager.chromedriver().setup();
 
     }
 

@@ -1,3 +1,5 @@
+package tests;
+
 import tests.FunctionalTest;
 
 import static org.junit.Assert.assertTrue;

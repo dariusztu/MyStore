@@ -17,10 +17,10 @@ public class HeaderPage {
 
 
     public void signInPageInHeaderClick(){
-        signInPageInHeader.click();
-    public HeaderPage (WebDriver driver) {
-        this.driver = driver;
-    }
+        signInPageInHeader.click(); }
+   // public HeaderPage (WebDriver driver) {
+      //  this.driver = driver;
+    //}
 
     @FindBy(xpath = "//*[@id=\"contact-link\"]/a")
     private WebElement ContactUsButton;

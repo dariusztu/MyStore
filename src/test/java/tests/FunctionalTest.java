@@ -42,8 +42,8 @@ public class FunctionalTest {
 
         driver = new ChromeDriver();
       //  this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-      //  this.cartObjectsObject = PageFactory.initElements(this.driver, pages.CartObjects.class);
-      //  this.loginPageObject = PageFactory.initElements(this.driver, pages.Login.class);
+      //  this.cartObjectsObject = PageFactory.initElements(this.driver, pages.pages.CartObjects.class);
+      //  this.loginPageObject = PageFactory.initElements(this.driver, pages.pages.Login.class);
 
 
 

@@ -2,6 +2,7 @@ package tests;
 
 
 import com.mifmif.common.regex.Generex;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Before;
@@ -31,7 +32,8 @@ public class CreateAnAccountPageTest {
 
     @BeforeClass
     public static void pathSetup(){
-        System.setProperty("webdriver.chrome.driver", "/Users/Marek/IdeaProjects/Junit/jdqzl1-selenium/src/test/java/chrome/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "/Users/Marek/IdeaProjects/Junit/jdqzl1-selenium/src/test/java/chrome/chromedriver");
+        WebDriverManager.chromedriver().setup();
     }
     @Before
     public void setup (){
