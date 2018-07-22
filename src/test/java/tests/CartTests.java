@@ -31,6 +31,8 @@ public class CartTests {
     private HeaderPage headerPageObject;
     private MyAccountPage myAccountPageObject;
     private MyAddressesPage myAddressesPageObject;
+    private AddProductPopUpPage addProductPopUpPageObject;
+    private SampleProductPage sampleProductPageObject;
     private WebDriver driver;
 
     @BeforeClass
@@ -101,7 +103,12 @@ public class CartTests {
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
         loginPageObject = new Login(driver);
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
         shoppingCartSummaryPageObject.goToPage();
         // add product to Cart her  e
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
