@@ -29,6 +29,7 @@ public class FunctionalTest {
     private Login loginPageObject;
     private ShoppingCartSummaryPage shoppingCartSummaryPageObject;
     private HeaderPage headerPageObject;
+    private MyAccountPage myAccountPageObject;
     private WebDriver driver;
 
     @BeforeClass
@@ -117,7 +118,9 @@ public class FunctionalTest {
 
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
-
+        shoppingCartSummaryPageObject.goToPage();
+        myAccountPageObject = new MyAccountPage(driver);
+        myAccountPageObject.myAddressesButtonClick();
         //TODO Add goToPage
         // go through adding product->summary here
         cartObjectsObject.addNewAddress();

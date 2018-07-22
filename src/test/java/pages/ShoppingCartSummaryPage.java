@@ -34,6 +34,8 @@ public class ShoppingCartSummaryPage {
     private WebElement inspectTextButton;
 
 
+
+
     public String addressTextGetText() {
         String addressTextString = addressTextButton;
         return addressTextString;
@@ -57,6 +59,8 @@ public class ShoppingCartSummaryPage {
         inspectTextButton.click();
 
     }
+
+
 
     public String addressTextButtonReturnColor() {
         String backgroundColor = addressTextButton.getCssValue("background-color");
