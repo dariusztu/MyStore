@@ -79,7 +79,7 @@ public class FunctionalTest {
     public void returnTrueIfProceedToCheckOutOpen() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
         cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
-        shoppingCartSummaryPageObject = PageFactory.initElements(this.driver, ShoppingCartSummaryPage.class);
+        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
 
         shoppingCartSummaryPageObject.goToPage();
 
@@ -94,7 +94,8 @@ public class FunctionalTest {
     public void returnTrueIfDeleteButtonIsClickable() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
         cartObjectsObject = new CartObjects(driver);
-        goToPage("http://automationpractice.com/index.php?controller=order");
+        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
+        shoppingCartSummaryPageObject.goToPage();
         assertTrue((driver.findElement(By.id("icon-trash")).isDisplayed()));
     }
 
@@ -103,8 +104,8 @@ public class FunctionalTest {
     public void returnTrueIfProductQuantityAddDeleteWorks() {
         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
         cartObjectsObject = new CartObjects(driver);
-
-        goToPage("http://automationpractice.com/index.php?controller=order");
+        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage((driver);
+        shoppingCartSummaryPageObject.goToPage();
         // add product to Cart here
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
         cartObjectsObject.addProductQuantityInSummaryTab();
