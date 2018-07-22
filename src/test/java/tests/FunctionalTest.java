@@ -54,11 +54,7 @@ public class FunctionalTest {
 
 
     }
-
-
-    public void goToPage(String strona) {
-        driver.get(strona);
-    }
+    
 
     @After
     public void tearDown() {
@@ -121,10 +117,9 @@ public class FunctionalTest {
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject.goToPage();
         myAccountPageObject = new MyAccountPage(driver);
+
         myAccountPageObject.myAddressesButtonClick();
         myAddressesPageObject.addNewAddressButtonClick();
-        //TODO Add goToPage
-        // go through adding product->summary here
         cartObjectsObject.addNewAddress();
         cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
         cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
