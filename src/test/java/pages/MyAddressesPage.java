@@ -16,7 +16,7 @@ public class MyAddressesPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css="/html/body/div/div[2]/div/div[3]/div/div[2]/a/span");
+    @FindBy(css="/html/body/div/div[2]/div/div[3]/div/div[2]/a/span")
     private WebElement addNewAddressButton;
 
     public void addNewAddressButtonClick() {

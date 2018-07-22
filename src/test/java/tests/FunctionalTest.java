@@ -54,7 +54,7 @@ public class FunctionalTest {
 
 
     }
-    
+
 
     @After
     public void tearDown() {
@@ -100,7 +100,7 @@ public class FunctionalTest {
     public void returnTrueIfProductQuantityAddDeleteWorks() {
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjects(driver);
-        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage((driver);
+        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         shoppingCartSummaryPageObject.goToPage();
         // add product to Cart here
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
@@ -117,7 +117,7 @@ public class FunctionalTest {
         cartObjectsObject = new CartObjects(driver);
         shoppingCartSummaryPageObject.goToPage();
         myAccountPageObject = new MyAccountPage(driver);
-
+        loginPageObject = new Login(driver);
         myAccountPageObject.myAddressesButtonClick();
         myAddressesPageObject.addNewAddressButtonClick();
         cartObjectsObject.addNewAddress();

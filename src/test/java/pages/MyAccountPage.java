@@ -9,7 +9,7 @@ public class MyAccountPage {
 
     WebDriver driver;
 
-    public void MyAccountPage(WebDriver driver) {
+    public MyAccountPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

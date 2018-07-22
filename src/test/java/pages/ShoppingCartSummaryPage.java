@@ -37,7 +37,7 @@ public class ShoppingCartSummaryPage {
 
 
     public String addressTextGetText() {
-        String addressTextString = addressTextButton;
+        String addressTextString = addressTextButton.getText();
         return addressTextString;
     }
 
