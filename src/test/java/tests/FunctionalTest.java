@@ -16,10 +16,7 @@ import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.CartObjects;
-import pages.HomePage;
-import pages.Login;
-import pages.ShoppingCartSummaryPage;
+import pages.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -31,6 +28,7 @@ public class FunctionalTest {
     private CartObjects cartObjectsObject;
     private Login loginPageObject;
     private ShoppingCartSummaryPage shoppingCartSummaryPageObject;
+    private HeaderPage headerPageObject;
     private WebDriver driver;
 
     @BeforeClass
@@ -69,7 +67,7 @@ public class FunctionalTest {
     @Test
     public void returnTrueIfGoToCartIsSuccessfull() {
         homePageObject = new HomePage(driver);
-        //TODO goToHomePage
+        homePageObject.goToHomePage();
         driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
         assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order"));
         assertTrue((driver.getTitle()).equals("Order - My Store"));
