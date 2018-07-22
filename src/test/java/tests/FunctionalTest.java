@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -14,6 +16,9 @@ import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.CartObjects;
+import pages.HomePage;
+import pages.Login;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -37,8 +42,8 @@ public class FunctionalTest {
 
         driver = new ChromeDriver();
       //  this.homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-      //  this.cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
-      //  this.loginPageObject = PageFactory.initElements(this.driver, Login.class);
+      //  this.cartObjectsObject = PageFactory.initElements(this.driver, pages.CartObjects.class);
+      //  this.loginPageObject = PageFactory.initElements(this.driver, pages.Login.class);
 
 
 
@@ -105,17 +110,17 @@ public class FunctionalTest {
 
     @Test
     public void  returnTrueIfProductQuantityAddDeleteWorks() {
-         homePageObject = PageFactory.initElements(this.driver, HomePage.class);
-         cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
+        homePageObject = PageFactory.initElements(this.driver, HomePage.class);
+        cartObjectsObject = PageFactory.initElements(this.driver, CartObjects.class);
 
         goToPage("http://automationpractice.com/index.php?controller=order");
         // add product to Cart here
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
         cartObjectsObject.addProductQuantityInSummaryTab();
-         assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
+        assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
         cartObjectsObject.substractProductQuantityInSummaryTab();
         assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 1);
-
+    }
     @Test
             public void returnTrueIfDeliveryAddressAddProperly() {
 
@@ -134,10 +139,10 @@ public class FunctionalTest {
 
         }
 
-    }
+}
 
 
-    }
+
 
 
 

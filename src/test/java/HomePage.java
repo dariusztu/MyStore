@@ -14,5 +14,4 @@ public class HomePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-
+}
