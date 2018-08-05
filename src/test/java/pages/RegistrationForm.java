@@ -68,16 +68,17 @@ public class RegistrationForm {
 
     }
 
-    public void setTitleMrRadioButton() {
+    public RegistrationForm setTitleMrRadioButton() {
         titleMrRadioButton.click();
+        return this;
     }
 
-    public void setCustomerFirstNameField() {
-        customerFirstNameField.sendKeys("FirstName");
+    public RegistrationForm setCustomerFirstNameField() {
+        customerFirstNameField.sendKeys("FirstName");return this;
     }
 
-    public void setCustomerLastNameField() {
-        customerLastNameField.sendKeys("LastName");
+    public RegistrationForm setCustomerLastNameField() {
+        customerLastNameField.sendKeys("LastName");return this;
     }
 
 
@@ -89,50 +90,51 @@ public class RegistrationForm {
         return password;
     }
 
-   public void setDayInDateOfBirthDropdown(){
-        dayInDateOfBirthDropdown.click();
+   public RegistrationForm setDayInDateOfBirthDropdown(){
+        dayInDateOfBirthDropdown.click();return this;
    }
-    public void setMonthInDateOfBirthDropdown(){
-        monthInDateOfBirthDropdown.click();
+    public RegistrationForm setMonthInDateOfBirthDropdown(){
+        monthInDateOfBirthDropdown.click();return this;
     }
 
-    public void setYearInDateOfBirthDropdown(){
-        yearInDateOfBirthDropdown.click();
+    public RegistrationForm setYearInDateOfBirthDropdown(){
+        yearInDateOfBirthDropdown.click();return this;
     }
 
-    public void setNameInYourAddressSection(){
-        nameInYourAddressSection.sendKeys("FirstNameInAdress");
+    public RegistrationForm setNameInYourAddressSection(){
+        nameInYourAddressSection.sendKeys("FirstNameInAdress");return this;
     }
-    public void setCompanyInAddressSection(){
-        companyInAddressSection.sendKeys("MyCompany");
-    }
-
-    public void setAddressInAdressSection(){
-        addressInAdressSection.sendKeys("Any Address");
+    public RegistrationForm setCompanyInAddressSection(){
+        companyInAddressSection.sendKeys("MyCompany");return this;
     }
 
-    public void setCityInAddressSection(){
-        cityInAddressSection.sendKeys("Sample City");
+    public RegistrationForm setAddressInAdressSection(){
+        addressInAdressSection.sendKeys("Any Address");return this;
     }
 
-    public void setStateInAddressSection(){
-        stateInAddressSection.click();
+    public RegistrationForm setCityInAddressSection(){
+        cityInAddressSection.sendKeys("Sample City");return this;
     }
 
-    public void setPostalCodeInAdessSection(){
-        postalCodeInAdessSection.sendKeys("00088");
+    public RegistrationForm setStateInAddressSection(){
+        stateInAddressSection.click();return this;
     }
 
-    public void setMobilePhoneInAddressSection(){
-        mobilePhoneInAddressSection.sendKeys("555-555-555");
+    public RegistrationForm setPostalCodeInAdessSection(){
+        postalCodeInAdessSection.sendKeys("00088");return this;
     }
 
-    public void clickRegisterButton(){
-        registerButton.click();
+    public RegistrationForm setMobilePhoneInAddressSection(){
+        mobilePhoneInAddressSection.sendKeys("555-555-555");return this;
     }
 
-    public void clearName(){
+    public RegistrationForm clickRegisterButton(){
+        registerButton.click();return this;
+    }
+
+    public RegistrationForm clearName(){
         nameInYourAddressSection.clear();
+        return this;
     }
 
     }

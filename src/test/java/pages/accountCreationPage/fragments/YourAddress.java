@@ -8,26 +8,49 @@ import org.openqa.selenium.support.PageFactory;
 public class YourAddress {
     WebDriver driver;
 
-    @FindBy(css = "id_gender1")
-    private WebElement titleMrRadioButton;
+    @FindBy(css = ".account_creation:nth-child(2)  #firstname")
+    private WebElement firstName;
 
-    @FindBy(css = "customer_firstname")
-    private WebElement customerFirstNameField;
+    @FindBy(css = ".account_creation:nth-child(2)  #lastname")
+    private WebElement lastName;
 
-    @FindBy(css = "customer_lastname")
-    private WebElement customerLastNameField;
+    @FindBy(css = ".account_creation:nth-child(2)  #company")
+    private WebElement company;
 
-    @FindBy(css = "passwd")
-    private WebElement passwordField;
+    @FindBy(css = ".account_creation:nth-child(2)  #address1")
+    private WebElement address1;
 
-    @FindBy(xpath = "//*[@id=\"days\"]/option[6]")
-    private WebElement dayInDateOfBirthDropdown;
+    @FindBy(css = ".account_creation:nth-child(2)  #address2")
+    private WebElement address2;
 
-    @FindBy (xpath = "//*[@id=\"months\"]/option[6]")
-    private WebElement monthInDateOfBirthDropdown;
+    @FindBy (css = ".account_creation:nth-child(2)  #city")
+    private WebElement city;
 
-    @FindBy(xpath = "//*[@id=\"years\"]/option[30]")
-    private WebElement yearInDateOfBirthDropdown;
+    @FindBy(css = ".account_creation:nth-child(2)  #uniform-id_state")
+    private WebElement state;
+
+    @FindBy(css = ".account_creation:nth-child(2)  #postcode")
+    private WebElement zipPostalCode;
+
+    @FindBy(css = ".account_creation:nth-child(2)  #uniform-id_country")
+    private WebElement country;
+
+    @FindBy(css = ".account_creation:nth-child(2)  #other")
+    private WebElement additionalInformation;
+
+    @FindBy(css = ".account_creation:nth-child(2)  #phone")
+    private WebElement phone;
+
+    @FindBy(css = ".account_creation:nth-child(2)  #phone_mobile")
+    private WebElement mobilePhone;
+
+    @FindBy(css = ".account_creation:nth-child(2)  #alias")
+    private WebElement assignAnAddressAlias;
+
+    @FindBy(css = ".submit #submitAccount")
+    private WebElement submitButton;
+
+
 
     public YourAddress(WebDriver driver) {
         this.driver = driver;
