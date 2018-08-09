@@ -1,6 +1,9 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import loggers.MainLogger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -45,6 +48,8 @@ public class CartTests {
     public void setup() {
 
         driver = new ChromeDriver();
+        private static Logger CartTestsLogger = LogManager.getLogger(CartTests.class);
+        CartTestsLogger.info("Setting up ChromeDriver");
 
     }
 
@@ -120,6 +125,8 @@ public class CartTests {
 
     @Test
     public void returnTrueIfDeliveryAddressAddProperly() {
+
+
 
         myAddressesPageObject = new MyAddressesPage(driver);
         homePageObject = new HomePage(driver);

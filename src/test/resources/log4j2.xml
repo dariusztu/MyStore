@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <Appenders>
+
+        <Console name="Console" >
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p %logger{36} - %m%n"/>
+        </Console>
+        <File name="MyFile" fileName="logs/log.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p %logger{1} - %m%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="log4j" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="ALL">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="MyFile"/>
+        </Root>
+
+    </Loggers>
+</Configuration>
