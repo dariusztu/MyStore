@@ -48,7 +48,7 @@ public class CartTests {
     public void setup() {
 
         driver = new ChromeDriver();
-        private static Logger CartTestsLogger = LogManager.getLogger(CartTests.class);
+        Logger CartTestsLogger = LogManager.getLogger(CartTests.class);
         CartTestsLogger.info("Setting up ChromeDriver");
 
     }

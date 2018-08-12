@@ -4,10 +4,7 @@ package tests;
 import com.mifmif.common.regex.Generex;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,6 +24,8 @@ public class CreateAnAccountPageTest {
     private SignIn signIn;
     private RegistrationForm registrationForm;
     private MyAccountPage myAccountPage;
+
+    //Zmienne testowe
     private String email;
     private String password;
 
@@ -46,6 +45,10 @@ public class CreateAnAccountPageTest {
         this.myAccountPage = PageFactory.initElements(this.driver, MyAccountPage.class);
     }
 
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
 
     @Test
     public void createAnAccountWithProperData(){
@@ -53,23 +56,23 @@ public class CreateAnAccountPageTest {
         headerPage.signInPageInHeaderClick();
         this.email = signIn.setEmailForCreatingAccount();
         signIn.submitButtonClick();
-        registrationForm.setTitleMrRadioButton();
-        registrationForm.setCustomerFirstNameField();
-        registrationForm.setCustomerLastNameField();
+        registrationForm.setTitleMrRadioButton()
+                .setCustomerFirstNameField()
+                .setCustomerLastNameField();
         assertEquals("rgba(156, 155, 155, 1)", registrationForm.getFirstNameInputColor());
         this.password = registrationForm.setPasswordFieldForCreatingAccount();
-        registrationForm.setDayInDateOfBirthDropdown();
-        registrationForm.setMonthInDateOfBirthDropdown();
-        registrationForm.setYearInDateOfBirthDropdown();
-        registrationForm.clearName();
-        registrationForm.setNameInYourAddressSection();
-        registrationForm.setCompanyInAddressSection();
-        registrationForm.setAddressInAdressSection();
-        registrationForm.setCityInAddressSection();
-        registrationForm.setStateInAddressSection();
-        registrationForm.setPostalCodeInAdessSection();
-        registrationForm.setMobilePhoneInAddressSection();
-        registrationForm.clickRegisterButton();
+        registrationForm.setDayInDateOfBirthDropdown()
+                .setMonthInDateOfBirthDropdown()
+                .setYearInDateOfBirthDropdown()
+                .clearName()
+                .setNameInYourAddressSection()
+                .setCompanyInAddressSection()
+                .setAddressInAdressSection()
+                .setCityInAddressSection()
+                .setStateInAddressSection()
+                .setPostalCodeInAdessSection()
+                .setMobilePhoneInAddressSection()
+                .clickRegisterButton();
         assertEquals("MY ACCOUNT", myAccountPage.myAccountTextOnPageIsDisplayed());
         myAccountPage.clickSignOutButton();
         signIn.enterMailinEmailField(email);
