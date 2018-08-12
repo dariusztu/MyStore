@@ -48,8 +48,8 @@ public class CartTests {
     public void setup() {
 
         driver = new ChromeDriver();
-        Logger CartTestsLogger = LogManager.getLogger(CartTests.class);
-        CartTestsLogger.info("Setting up ChromeDriver");
+       Logger CartTestsLogger = LogManager.getLogger(CartTests.class);
+       CartTestsLogger.info("Setting up ChromeDriver");
 
     }
 
