@@ -1,11 +1,8 @@
 package tests;
 
 
-import com.mifmif.common.regex.Generex;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -21,7 +18,7 @@ public class CreateAnAccountPageTest {
     private WebDriver driver;
     private HomePage homePage;
     private HeaderPage headerPage;
-    private SignIn signIn;
+    private SignInPage signIn;
     private RegistrationForm registrationForm;
     private MyAccountPage myAccountPage;
 
@@ -40,7 +37,7 @@ public class CreateAnAccountPageTest {
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         this.homePage = PageFactory.initElements(this.driver, HomePage.class);
         this.headerPage = PageFactory.initElements(this.driver, HeaderPage.class);
-        this.signIn = PageFactory.initElements(this.driver, SignIn.class);
+        this.signIn = PageFactory.initElements(this.driver, SignInPage.class);
         this.registrationForm = PageFactory.initElements(this.driver, RegistrationForm.class);
         this.myAccountPage = PageFactory.initElements(this.driver, MyAccountPage.class);
     }

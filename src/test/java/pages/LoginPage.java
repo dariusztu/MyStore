@@ -8,14 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class Login{
+public class LoginPage {
 
              private WebDriver driver;
             private String url = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
             private String email = "k2774546@nwytg.com";
             private String passwd = "qwerty";
 
-    public Login(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
             this.driver = driver;
         PageFactory.initElements(driver, this);
 

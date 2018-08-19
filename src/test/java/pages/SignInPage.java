@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SignIn extends RegistrationForm{
+public class SignInPage extends RegistrationForm{
     WebDriver driver;
 
-    public SignIn(WebDriver driver){
+    public SignInPage(WebDriver driver){
         this.driver = driver;
     }
     @FindBy(xpath ="//*[@id=\"email_create\"]")
