@@ -21,8 +21,8 @@ public class LoginPage {
 
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.findElement(By.id("email")).sendKeys("k2774546@nwytg.com");
-        driver.findElement(By.id("passwd")).sendKeys("qwerty");
+        driver.findElement(By.id("email")).sendKeys(email);
+        driver.findElement(By.id("passwd")).sendKeys(passwd);
         driver.findElement(By.xpath("//*[@id=\"SubmitLogin\"]/span")).click();
         }
 

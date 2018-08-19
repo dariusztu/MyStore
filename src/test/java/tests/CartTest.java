@@ -3,20 +3,24 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.*;
 
 public class CartTest {
 
@@ -63,7 +67,7 @@ public class CartTest {
 
 
     @Test
-    public void returnTrueIfGoToCartIsSuccessfull() {
+    public void passIfTrueIfGoToCartIsSuccessfull() {
         homePageObject = new HomePage(driver);
         homePageObject.goToHomePage();
         driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
@@ -72,7 +76,7 @@ public class CartTest {
     }
 
     @Test
-    public void returnTrueIfProceedToCheckOutOpen() {
+    public void passIfProceedToCheckOutOpen() {
         homePageObject = new HomePage(driver);
         cartObjectsObject = PageFactory.initElements(this.driver, CartObjectsPage.class);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
@@ -87,17 +91,28 @@ public class CartTest {
     }
 
     @Test
-    public void returnTrueIfDeleteButtonIsClickable() {
+    public void passIfDeleteButtonIsClickable() {
+        loginPagePageObject = new LoginPage(driver);
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
         shoppingCartSummaryPageObject.goToPage();
-        assertTrue((driver.findElement(By.id("icon-trash")).isDisplayed()));
+        cartObjectsObject.checkIfdeleteButtonIsVisible();
+
+        assertTrue((cartObjectsObject.checkIfdeleteButtonIsVisible().isDisplayed()));
+
+
+
     }
 
 
     @Test
-    public void returnTrueIfProductQuantityAddDeleteWorks() {
+    public void passIfProductQuantityAddDeleteWorks() {
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
@@ -117,7 +132,7 @@ public class CartTest {
     }
 
     @Test
-    public void returnTrueIfDeliveryAddressAddProperly() {
+    public void passIfIfDeliveryAddressAddProperly() {
 
 
 

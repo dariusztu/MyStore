@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ShoppingCartSummaryPage {
 
-    private String url = "http://automationpractice.com/index.php?controller=order";
+        private String url = "http://automationpractice.com/index.php?controller=order";
     WebDriver driver;
 
     public ShoppingCartSummaryPage(WebDriver driver) {

@@ -1,0 +1,14 @@
+Pages - every *Page class represents site elements and user actions
+accountCreationPage - represents registration form site
+AddProductPopUpPage - represents popup form showing after buy action
+CartObjectsPage - represents user cart site  with bought products
+ContactUsPage - represents contact us page
+FooterPage - represents footer
+HeaderPage - represents header
+HomePage - represents Main/Landing page
+LoginPage - represents user login page, using static login and password
+MyAccountPage - represents user account settings page
+MyAddressessPage - represents user adresses page
+SampleProductPage - represents random product page
+ShoppingCartSummaryPage - represents user cart summary
+SignInPage - represents user login page, using random login and password

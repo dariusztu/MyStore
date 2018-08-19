@@ -16,10 +16,11 @@ public class AddProductPopUpPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css="a.btn:nth-child(2) > span:nth-child(1)")
+    @FindBy(css=".btn.btn-default[title=\"Proceed to checkout\"]")
     private WebElement proceedToCheckoutButton;
 
     public void proceedToCheckoutButtonClick() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         proceedToCheckoutButton.click();
     }
 }

@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartObjectsPage {
 
@@ -39,13 +41,13 @@ public class CartObjectsPage {
     private WebElement proceedtocheckoutbutton;
 
     @FindBy(css=".icon-minus")
-    private WebElement subtractbutton;
+    private WebElement substractbutton;
 
     @FindBy(css=".icon-plus")
     private WebElement addbutton;
 
     @FindBy(css=".icon-trash")
-    private WebElement substractButton;
+    private WebElement deleteButton;
 
     //Address objects
 
@@ -205,7 +207,14 @@ public class CartObjectsPage {
     }
 
     public void substractProductQuantityInSummaryTab() {
-        this.substractButton.click();
+        this.substractbutton.click();
+    }
+
+    public WebElement checkIfdeleteButtonIsVisible(){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement returnButtonCSS;
+        returnButtonCSS = wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
+        return deleteButton;
     }
 
     public int checkProductQuantityInSummaryTab() {
