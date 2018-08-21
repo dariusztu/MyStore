@@ -199,6 +199,17 @@ public class CartObjectsPage {
         return this.AddNewAddressZipPostalCode;
     }
 
+    public WebElement addNewAddressHomePhoneFill(String AddNewAddressHomePhone) {
+        this.AddNewAddressHomePhone.sendKeys(AddNewAddressHomePhone);
+        return this.AddNewAddressHomePhone;
+    }
+
+    public WebElement addNewAddressMobilePhoneFill(String AddNewAddressMobilePhone) {
+        this.AddNewAddressMobilePhone.sendKeys(AddNewAddressMobilePhone);
+        return this.AddNewAddressMobilePhone;
+    }
+
+
     public WebElement addNewAddress() {
         this.addNewAddress.click();
         return this.addNewAddress;
@@ -233,6 +244,8 @@ public class CartObjectsPage {
         this.substractbutton.click();
         return this.substractbutton;
     }
+
+
 
     public WebElement checkIfdeleteButtonIsVisible(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
