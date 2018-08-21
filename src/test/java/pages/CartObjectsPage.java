@@ -91,8 +91,9 @@ public class CartObjectsPage {
 
     // Address comment
 
-    public void addressComment(String addressCommentkeys) {
+    public WebElement addressComment(String addressCommentkeys) {
         addressCommentForm.sendKeys(addressCommentkeys);
+        return this.addressCommentForm;
     }
 
 
@@ -151,70 +152,86 @@ public class CartObjectsPage {
 
     // Add new Address sendKeys
 
-    public void addNewAddressFirstNameFill(String AddNewAddressFirstName) {
+    public WebElement addNewAddressFirstNameFill(String AddNewAddressFirstName) {
         this.AddNewAddressFirstName.sendKeys(AddNewAddressFirstName);
+        return this.AddNewAddressFirstName;
     }
 
-    public void addNewAddressLastNameFill(String AddNewAddressLastName) {
+    public WebElement addNewAddressLastNameFill(String AddNewAddressLastName) {
         this.AddNewAddressLastName.sendKeys(AddNewAddressLastName);
+        return this.AddNewAddressLastName;
     }
 
-    public void addNewAddressLastCompanyFill(String AddNewAddressCompany) {
+    public WebElement addNewAddressCompanyFill(String AddNewAddressCompany) {
         this.AddNewAddressCompany.sendKeys(AddNewAddressCompany);
+        return this.AddNewAddressCompany;
     }
 
-    public void addNewAddressLastAddressFill(String AddNewAddressAddress) {
+    public WebElement addNewAddressAddressFill(String AddNewAddressAddress) {
         this.AddNewAddressAddress.sendKeys(AddNewAddressAddress);
+        return this.AddNewAddressAddress;
     }
 
-    public void addNewAddressLastAddressLine2Fill(String AddNewAddressAddressLine2) {
+    public WebElement addNewAddressAddressLine2Fill(String AddNewAddressAddressLine2) {
         this.AddNewAddressAddressLine2.sendKeys(AddNewAddressAddressLine2);
+        return this.AddNewAddressAddressLine2;
     }
 
-    public void addNewAddressCityFill(String AddNewAddressCity) {
+    public WebElement addNewAddressCityFill(String AddNewAddressCity) {
         this.AddNewAddressCity.sendKeys(AddNewAddressCity);
+        return this.AddNewAddressCity;
     }
 
-    public void addNewAddressStateFill() {
+    public WebElement addNewAddressStateFill() {
         Select dropdown1 = new Select(AddNewAddressState);
         dropdown1.deselectByValue("Alaska");
+        return this.AddNewAddressState;
     }
 
-    public void addNewAddressCountryFill() {
+    public WebElement addNewAddressCountryFill() {
         Select dropdown2 = new Select(AddNewAddressCountry);
         dropdown2.deselectByValue("United States");
+        return this.AddNewAddressCountry;
     }
 
-    public void addNewAddressZipPostalCodeFill(String AddNewAddressZipPostalCode) {
+    public WebElement addNewAddressZipPostalCodeFill(String AddNewAddressZipPostalCode) {
         this.AddNewAddressZipPostalCode.sendKeys(AddNewAddressZipPostalCode);
+        return this.AddNewAddressZipPostalCode;
     }
 
-    public void addNewAddress() {
+    public WebElement addNewAddress() {
         this.addNewAddress.click();
+        return this.addNewAddress;
     }
 
-    public void acceptNewAddress() {
+    public WebElement acceptNewAddress() {
         this.saveButtonAtAddNewAddress.click();
+        return this.saveButtonAtAddNewAddress;
     }
 
-    public void goBackToYourAddressess() {
+    public WebElement goBackToYourAddressess() {
         this.backToYourAddressesButton.click();
+        return this.backToYourAddressesButton;
     }
 
-    public void updateYourBillingAddress() {
+    public WebElement updateYourBillingAddress() {
         this.updateYourBillingAddressButton.click();
+        return this.updateYourBillingAddressButton;
     }
 
-    public void acceptTermsOfServiceAtShippingTab() {
+    public WebElement acceptTermsOfServiceAtShippingTab() {
         this.termsOfServiceCheck.click();
+        return this.termsOfServiceCheck;
     }
 
-    public void addProductQuantityInSummaryTab() {
+    public WebElement addProductQuantityInSummaryTab() {
         this.addbutton.click();
+        return this.addbutton;
     }
 
-    public void substractProductQuantityInSummaryTab() {
+    public WebElement substractProductQuantityInSummaryTab() {
         this.substractbutton.click();
+        return this.substractbutton;
     }
 
     public WebElement checkIfdeleteButtonIsVisible(){
