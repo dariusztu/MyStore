@@ -184,13 +184,14 @@ public class CartObjectsPage {
 
     public WebElement addNewAddressStateFill() {
         Select dropdown1 = new Select(AddNewAddressState);
-        dropdown1.deselectByValue("Alaska");
+        dropdown1.getOptions();
+        dropdown1.selectByIndex(1);
         return this.AddNewAddressState;
     }
 
     public WebElement addNewAddressCountryFill() {
         Select dropdown2 = new Select(AddNewAddressCountry);
-        dropdown2.deselectByValue("United States");
+        dropdown2.selectByIndex(0);
         return this.AddNewAddressCountry;
     }
 

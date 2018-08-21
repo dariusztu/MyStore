@@ -4,7 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import loggers.MainLogger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,12 +18,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.assertj.core.api.Assertions.*;
 
 public class CartTest {
 
@@ -73,8 +69,8 @@ public class CartTest {
         homePageObject = new HomePage(driver);
         homePageObject.goToHomePage();
         driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
-        assertTrue(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order"));
-        assertTrue((driver.getTitle()).equals("Order - My Store"));
+        assertThat(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order")).isTrue();
+        assertThat((driver.getTitle()).equals("Order - My Store")).isTrue();
     }
 
     @Test
@@ -84,13 +80,8 @@ public class CartTest {
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
 
         shoppingCartSummaryPageObject.goToPage();
-
-        assertEquals("03. Address", shoppingCartSummaryPageObject.addressTextGetText());
-        //assertThat(shoppingCartSummaryPageObject.addressTextGetText());
-
-
-
-        assertEquals("#000000", shoppingCartSummaryPageObject.addressTextButtonReturnColor());
+        assertThat(shoppingCartSummaryPageObject.addressTextGetText()).isEqualTo("03. Address");
+        assertThat(shoppingCartSummaryPageObject.addressTextButtonReturnColor()).isEqualTo("#000000");
 
     }
 
@@ -108,7 +99,7 @@ public class CartTest {
         shoppingCartSummaryPageObject.goToPage();
         cartObjectsObject.checkIfdeleteButtonIsVisible();
 
-        assertTrue((cartObjectsObject.checkIfdeleteButtonIsVisible().isDisplayed()));
+        assertThat(cartObjectsObject.checkIfdeleteButtonIsVisible().isDisplayed()).isTrue();
 
 
 
@@ -134,10 +125,10 @@ public class CartTest {
         cartObjectsObject.addProductQuantityInSummaryTab();
         cartObjectsObject.refreshPage();
         //Assert that product quantity is as required
-        Assertions.assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isGreaterThan(1);
+        assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isGreaterThan(1);
         cartObjectsObject.substractProductQuantityInSummaryTab();
         cartObjectsObject.refreshPage();
-        Assertions.assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isLessThan(2);
+        assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isLessThan(2);
     }
 
     @Test
@@ -151,14 +142,26 @@ public class CartTest {
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         myAccountPageObject = new MyAccountPage(driver);
         loginPagePageObject = new LoginPage(driver);
+        //Go to MyAddresses Page
         myAddressesPageObject.goToPage();
         myAddressesPageObject.addNewAddressButtonClick();
+        //Fill new user address
         cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
         cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
-        cartObjectsObject.addNewAddressLastCompanyFill("Google");
-        cartObjectsObject.addNewAddressLastAddressFill("Abc 2");
-        cartObjectsObject.addNewAddressLastAddressLine2Fill("Okg 3");
+        cartObjectsObject.addNewAddressCompanyFill("Google");
+        cartObjectsObject.addNewAddressAddressFill("Abc 2");
+        cartObjectsObject.addNewAddressAddressLine2Fill("Okg 3");
         cartObjectsObject.addNewAddressCityFill("Warsaw");
+        cartObjectsObject.addNewAddressStateFill();
+        cartObjectsObject.addNewAddressZipPostalCodeFill("22333");
+        cartObjectsObject.addNewAddressCountryFill();
+        cartObjectsObject.addNewAddressHomePhoneFill("123456789");
+        cartObjectsObject.addNewAddressMobilePhoneFill("111222333");
+        cartObjectsObject.addressComment("razdwatrzy");
+        cartObjectsObject.addNewAddressAddressForFutureReferenceFill("ptwew");
+
+        List<WebElement> errors = driver.findElements(By.cssSelector("form-error"));
+        assertThat((errors).contains("form-error")).isFalse();
 
     }
 
