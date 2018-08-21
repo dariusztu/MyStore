@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartObjectsPage {
@@ -174,8 +175,14 @@ public class CartObjectsPage {
         this.AddNewAddressCity.sendKeys(AddNewAddressCity);
     }
 
-    public void addNewAddressStateFill(String AddNewAddressState) {
-        this.AddNewAddressState.sendKeys(AddNewAddressState);
+    public void addNewAddressStateFill() {
+        Select dropdown1 = new Select(AddNewAddressState);
+        dropdown1.deselectByValue("Alaska");
+    }
+
+    public void addNewAddressCountryFill() {
+        Select dropdown2 = new Select(AddNewAddressCountry);
+        dropdown2.deselectByValue("United States");
     }
 
     public void addNewAddressZipPostalCodeFill(String AddNewAddressZipPostalCode) {
