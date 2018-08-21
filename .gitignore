@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
+.idea/
 MyStoreTesting.iml
 src/test/resources/chromedriver
 
