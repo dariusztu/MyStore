@@ -37,7 +37,6 @@ public class CartTest {
 
     @BeforeClass
     public static void pathSetup() {
-        // System.setProperty("webdriver.chrome.driver", "/home/dariusztu/IdeaProjects/MyStoreTesting/src/test/resources/chromedriver");
         WebDriverManager.chromedriver().setup();
     }
 
