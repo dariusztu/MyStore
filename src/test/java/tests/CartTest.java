@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import loggers.MainLogger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
@@ -16,6 +17,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -82,11 +85,13 @@ public class CartTest {
 
         shoppingCartSummaryPageObject.goToPage();
 
-        assertEquals("Address", shoppingCartSummaryPageObject.addressTextGetText());
+        assertEquals("03. Address", shoppingCartSummaryPageObject.addressTextGetText());
+        //assertThat(shoppingCartSummaryPageObject.addressTextGetText());
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+
 
         assertEquals("#000000", shoppingCartSummaryPageObject.addressTextButtonReturnColor());
+
     }
 
     @Test
@@ -117,17 +122,22 @@ public class CartTest {
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         sampleProductPageObject = new SampleProductPage(driver);
         addProductPopUpPageObject = new AddProductPopUpPage(driver);
+        //Login
         loginPagePageObject = new LoginPage(driver);
+        // Add random product to cart
         sampleProductPageObject.goToPage();
         sampleProductPageObject.addToCartButtonClick();
         addProductPopUpPageObject.proceedToCheckoutButtonClick();
         shoppingCartSummaryPageObject.goToPage();
-        // add product to Cart her  e
+
         int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
         cartObjectsObject.addProductQuantityInSummaryTab();
-        assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 2);
+        cartObjectsObject.refreshPage();
+        //Assert that product quantity is as required
+        Assertions.assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isGreaterThan(1);
         cartObjectsObject.substractProductQuantityInSummaryTab();
-        assertEquals(((cartObjectsObject.checkProductQuantityInSummaryTab()) > quantityBefore), 1);
+        cartObjectsObject.refreshPage();
+        Assertions.assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isLessThan(2);
     }
 
     @Test

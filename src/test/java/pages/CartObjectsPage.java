@@ -218,8 +218,14 @@ public class CartObjectsPage {
     }
 
     public int checkProductQuantityInSummaryTab() {
-        int productQuantity = Integer.getInteger(this.productQuantityNumberInSummary.getText());
+
+        //int productQuantity = Integer.parseInt(this.productQuantityNumberInSummary.getAttribute("value"));
+        int productQuantity = Integer.valueOf(this.productQuantityNumberInSummary.getAttribute("value"));
         return productQuantity;
+    }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
     }
 
 }
