@@ -4,7 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import loggers.MainLogger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import static org.assertj.core.api.Assertions.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -33,7 +35,7 @@ public class CartTest {
     private AddProductPopUpPage addProductPopUpPageObject;
     private SampleProductPage sampleProductPageObject;
     private WebDriver driver;
-
+    private Logger CartTestsLogger = LogManager.getLogger(CartTest.class);
     @BeforeClass
     public static void pathSetup() {
         WebDriverManager.chromedriver().setup();
@@ -43,8 +45,9 @@ public class CartTest {
     public void setup() {
 
         driver = new ChromeDriver();
-       Logger CartTestsLogger = LogManager.getLogger(CartTest.class);
-       CartTestsLogger.info("Setting up ChromeDriver");
+
+        CartTestsLogger.info("Setting up ChromeDriver on " + WebDriverManager.config().getOs() +
+        " " + WebDriverManager.config().getArchitecture());
 
     }
 
@@ -61,7 +64,9 @@ public class CartTest {
     @After
     public void tearDown() {
         driver.quit();
+        CartTestsLogger.info("Closing ChromeDriver");
     }
+
 
 
     @Test
@@ -102,7 +107,6 @@ public class CartTest {
         assertThat(cartObjectsObject.checkIfdeleteButtonIsVisible().isDisplayed()).isTrue();
 
 
-
     }
 
 
@@ -133,7 +137,6 @@ public class CartTest {
 
     @Test
     public void passIfIfDeliveryAddressAddProperly() {
-
 
 
         myAddressesPageObject = new MyAddressesPage(driver);
