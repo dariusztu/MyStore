@@ -209,6 +209,12 @@ public class CartObjectsPage {
         return this.AddNewAddressMobilePhone;
     }
 
+    public WebElement addNewAddressAddressForFutureReferenceFill(String AddNewAddressAddressForFutureReference) {
+        this.AddNewAddressAddressForFutureReference.sendKeys(AddNewAddressAddressForFutureReference);
+        return this.AddNewAddressAddressForFutureReference;
+    }
+
+
 
     public WebElement addNewAddress() {
         this.addNewAddress.click();
