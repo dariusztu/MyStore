@@ -98,13 +98,12 @@ public class CartTest {
         cartObjectsObject = new CartObjectsPage(driver);
         sampleProductPageObject = new SampleProductPage(driver);
         addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         sampleProductPageObject.goToPage();
         sampleProductPageObject.addToCartButtonClick();
         addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        shoppingCartSummaryPageObject.goToPage();
-        shoppingCartSummaryPageObject.checkIfdeleteButtonIsVisible();
-        assertThat(shoppingCartSummaryPageObject.checkIfdeleteButtonIsVisible().isDisplayed()).isTrue();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();
+        assertThat(cartObjectsObject.shoppingCartSummaryPage.checkIfdeleteButtonIsClickable().isDisplayed()).isTrue();
+
 
 
     }
