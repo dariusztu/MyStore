@@ -1,4 +1,4 @@
-package pages;
+package pages.cartPage.fragments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShoppingCartSummaryPage {
 
@@ -20,6 +22,25 @@ public class ShoppingCartSummaryPage {
     public void goToPage() {
         driver.get(url);
     }
+
+    //Summary
+
+    @FindBy(css=".cart_quantity_input")
+    private WebElement productQuantityNumberInSummary;
+
+    @FindBy(css=".shopping_cart > a:nth-child(1)")
+    private WebElement shoppingcartbutton;
+
+    @FindBy(css=".icon-minus")
+    private WebElement substractbutton;
+
+    @FindBy(css=".icon-plus")
+    private WebElement addbutton;
+
+    @FindBy(css=".icon-trash")
+    private WebElement deleteButton;
+
+
 
     @FindBy(xpath="/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")
     private WebElement addressTextButton;
@@ -68,6 +89,29 @@ public class ShoppingCartSummaryPage {
         return backgroundColorHex;
     }
 
+    public WebElement checkIfdeleteButtonIsVisible(){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement returnButtonCSS;
+        returnButtonCSS = wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
+        return deleteButton;
+    }
+
+    public int checkProductQuantityInSummaryTab() {
+
+        //int productQuantity = Integer.parseInt(this.productQuantityNumberInSummary.getAttribute("value"));
+        int productQuantity = Integer.valueOf(this.productQuantityNumberInSummary.getAttribute("value"));
+        return productQuantity;
+    }
+
+    public WebElement substractProductQuantityInSummaryTab() {
+        this.substractbutton.click();
+        return this.substractbutton;
+    }
+
+    public WebElement addProductQuantityInSummaryTab() {
+        this.addbutton.click();
+        return this.addbutton;
+    }
 
 
 

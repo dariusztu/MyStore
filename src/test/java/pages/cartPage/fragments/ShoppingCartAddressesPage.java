@@ -1,100 +1,27 @@
-package pages;
+package pages.cartPage.fragments;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CartObjectsPage {
-
+public class ShoppingCartAddressesPage {
     WebDriver driver;
 
-    public CartObjectsPage(WebDriver driver) {
+    private String url = "http://automationpractice.com/index.php?controller=order&step=1";
+
+    public ShoppingCartAddressesPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    // Switching between tabs
-
-    @FindBy(css="li.step_done:nth-child(1) > a:nth-child(1)")
-    private WebElement summaryTab;
-
-    @FindBy(css="li.step_done:nth-child(2) > a:nth-child(1)")
-    private WebElement signInTab;
-
-    @FindBy(css="li.step_done:nth-child(3) > a:nth-child(1)")
-    private WebElement addressTab;
-
-    @FindBy(css="li.step_done:nth-child(4) > a:nth-child(1)")
-    private WebElement shippingTab;
-
-
-    //Summary
-
-
-    @FindBy(css=".shopping_cart > a:nth-child(1)")
-    private WebElement shoppingcartbutton;
-
-    @FindBy(css=".standard-checkout")
-    private WebElement proceedtocheckoutbutton;
-
-    @FindBy(css=".icon-minus")
-    private WebElement substractbutton;
-
-    @FindBy(css=".icon-plus")
-    private WebElement addbutton;
-
-    @FindBy(css=".icon-trash")
-    private WebElement deleteButton;
-
-    //Address objects
-
-    @FindBy(css="#id_address_delivery")
-    private WebElement choosedeliveryaddress;
-
-    @FindBy(css="#addressesAreEquals")
-    private WebElement useDeliveryAddressAsTheBillingAddress;
-
-    @FindBy(css="#address_delivery > li:nth-child(8) > a:nth-child(1) > span:nth-child(1)")
-    private WebElement updateYourDeliveryAddress;
-
-    @FindBy(css="#address_invoice > li:nth-child(8) > a:nth-child(1) > span:nth-child(1)")
-    private WebElement updateYourBillingAddress;
-
-    @FindBy(css=".address_add > a:nth-child(1) > span:nth-child(1)")
-    private WebElement addNewAddress;
-
-    @FindBy(css=".button-exclusive")
-    private WebElement continueShopping;
-
-    @FindBy(css="#delivery_option_71753_0")
-    private WebElement shippingOptionButton;
-
-
-    @FindBy(css="#cgv")
-    private WebElement termsOfServiceCheck;
-
-    @FindBy(css=".bankwire")
-    private WebElement tpayByBankWire;
-
-    @FindBy(css=".cheque")
-    private WebElement payByCheck;
-
     @FindBy(css="textarea.form-control")
     private WebElement addressCommentForm;
 
-
-
-
-    // Address comment
-
-    public WebElement addressComment(String addressCommentkeys) {
-        addressCommentForm.sendKeys(addressCommentkeys);
-        return this.addressCommentForm;
-    }
+    // Proceed different button
+    @FindBy(css="[type='submit'][name='processAddress']")
+    private WebElement addressPageProceedButton;
 
 
     // Add new address page
@@ -146,9 +73,6 @@ public class CartObjectsPage {
 
     @FindBy(css="#address_invoice > li:nth-child(7) > a:nth-child(1) > span:nth-child(1)")
     private WebElement updateYourBillingAddressButton;
-
-    @FindBy(css=".cart_quantity_input")
-    private WebElement productQuantityNumberInSummary;
 
     // Add new Address sendKeys
 
@@ -217,10 +141,7 @@ public class CartObjectsPage {
 
 
 
-    public WebElement addNewAddress() {
-        this.addNewAddress.click();
-        return this.addNewAddress;
-    }
+
 
     public WebElement acceptNewAddress() {
         this.saveButtonAtAddNewAddress.click();
@@ -237,39 +158,16 @@ public class CartObjectsPage {
         return this.updateYourBillingAddressButton;
     }
 
-    public WebElement acceptTermsOfServiceAtShippingTab() {
-        this.termsOfServiceCheck.click();
-        return this.termsOfServiceCheck;
+    // Address comment
+
+    public WebElement addressComment(String addressCommentkeys) {
+        addressCommentForm.sendKeys(addressCommentkeys);
+        return this.addressCommentForm;
     }
 
-    public WebElement addProductQuantityInSummaryTab() {
-        this.addbutton.click();
-        return this.addbutton;
+    // Proceed button
+    public  WebElement addressPageProceedButtonClick() {
+        addressPageProceedButton.click();
+        return  addressPageProceedButton;
     }
-
-    public WebElement substractProductQuantityInSummaryTab() {
-        this.substractbutton.click();
-        return this.substractbutton;
-    }
-
-
-
-    public WebElement checkIfdeleteButtonIsVisible(){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement returnButtonCSS;
-        returnButtonCSS = wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
-        return deleteButton;
-    }
-
-    public int checkProductQuantityInSummaryTab() {
-
-        //int productQuantity = Integer.parseInt(this.productQuantityNumberInSummary.getAttribute("value"));
-        int productQuantity = Integer.valueOf(this.productQuantityNumberInSummary.getAttribute("value"));
-        return productQuantity;
-    }
-
-    public void refreshPage() {
-        driver.navigate().refresh();
-    }
-
 }

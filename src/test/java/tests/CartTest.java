@@ -1,7 +1,6 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import loggers.MainLogger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,9 +18,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
+import pages.cartPage.CartObjectsPage;
+import pages.cartPage.fragments.ShoppingCartSummaryPage;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class CartTest {
 
@@ -103,9 +103,8 @@ public class CartTest {
         sampleProductPageObject.addToCartButtonClick();
         addProductPopUpPageObject.proceedToCheckoutButtonClick();
         shoppingCartSummaryPageObject.goToPage();
-        cartObjectsObject.checkIfdeleteButtonIsVisible();
-
-        assertThat(cartObjectsObject.checkIfdeleteButtonIsVisible().isDisplayed()).isTrue();
+        shoppingCartSummaryPageObject.checkIfdeleteButtonIsVisible();
+        assertThat(shoppingCartSummaryPageObject.checkIfdeleteButtonIsVisible().isDisplayed()).isTrue();
 
 
     }
@@ -115,7 +114,6 @@ public class CartTest {
     public void passIfProductQuantityAddDeleteWorks() {
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
-        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         sampleProductPageObject = new SampleProductPage(driver);
         addProductPopUpPageObject = new AddProductPopUpPage(driver);
         //Login
@@ -125,16 +123,18 @@ public class CartTest {
         sampleProductPageObject.goToPage();
         sampleProductPageObject.addToCartButtonClick();
         addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        shoppingCartSummaryPageObject.goToPage();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();
 
-        int quantityBefore = cartObjectsObject.checkProductQuantityInSummaryTab();
-        cartObjectsObject.addProductQuantityInSummaryTab();
+        int quantityBefore = cartObjectsObject.shoppingCartSummaryPage.checkProductQuantityInSummaryTab();
+        cartObjectsObject.shoppingCartSummaryPage.addProductQuantityInSummaryTab();
         cartObjectsObject.refreshPage();
         //Assert that product quantity is as required
-        assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isGreaterThan(1);
-        cartObjectsObject.substractProductQuantityInSummaryTab();
+        assertThat(cartObjectsObject.shoppingCartSummaryPage.checkProductQuantityInSummaryTab()).isGreaterThan(1);
+        cartObjectsObject.shoppingCartSummaryPage.substractProductQuantityInSummaryTab();
         cartObjectsObject.refreshPage();
-        assertThat(cartObjectsObject.checkProductQuantityInSummaryTab()).isLessThan(2);
+        assertThat(cartObjectsObject.shoppingCartSummaryPage.checkProductQuantityInSummaryTab()).isLessThan(2);
+
+
     }
 
     @Test
@@ -144,30 +144,54 @@ public class CartTest {
         myAddressesPageObject = new MyAddressesPage(driver);
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
-        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
-        myAccountPageObject = new MyAccountPage(driver);
         loginPagePageObject = new LoginPage(driver);
         CartTestsLogger.info("Logging in using static login and password");
         //Go to MyAddresses Page
         myAddressesPageObject.goToPage();
         myAddressesPageObject.addNewAddressButtonClick();
         //Fill new user address
-        cartObjectsObject.addNewAddressFirstNameFill("Abcdef");
-        cartObjectsObject.addNewAddressLastNameFill("DSdsfd");
-        cartObjectsObject.addNewAddressCompanyFill("Google");
-        cartObjectsObject.addNewAddressAddressFill("Abc 2");
-        cartObjectsObject.addNewAddressAddressLine2Fill("Okg 3");
-        cartObjectsObject.addNewAddressCityFill("Warsaw");
-        cartObjectsObject.addNewAddressStateFill();
-        cartObjectsObject.addNewAddressZipPostalCodeFill("22333");
-        cartObjectsObject.addNewAddressCountryFill();
-        cartObjectsObject.addNewAddressHomePhoneFill("123456789");
-        cartObjectsObject.addNewAddressMobilePhoneFill("111222333");
-        cartObjectsObject.addressComment("razdwatrzy");
-        cartObjectsObject.addNewAddressAddressForFutureReferenceFill("ptwew");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressFirstNameFill("Abcdef");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressLastNameFill("DSdsfd");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressCompanyFill("Google");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressFill("Abc 2");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressLine2Fill("Okg 3");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressCityFill("Warsaw");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressStateFill();
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressZipPostalCodeFill("22333");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressCountryFill();
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressHomePhoneFill("123456789");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressMobilePhoneFill("111222333");
+        cartObjectsObject.shoppingCartAddressesPage.addressComment("razdwatrzy");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressForFutureReferenceFill("ptwew");
 
         List<WebElement> errors = driver.findElements(By.cssSelector("form-error"));
         assertThat((errors).contains("form-error")).isFalse();
+        cartObjectsObject.shoppingCartAddressesPage.acceptNewAddress();
+
+
+    }
+
+    @Test
+    public void passIfTOSCheckedAbleToProceed() {
+
+        myAddressesPageObject = new MyAddressesPage(driver);
+        homePageObject = new HomePage(driver);
+        cartObjectsObject = new CartObjectsPage(driver);
+        loginPagePageObject = new LoginPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();;
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+        cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
+        cartObjectsObject.shoppingCartShippingPage.acceptTermsOfServiceAtShippingTab();
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+
+        assertThat(cartObjectsObject.shoppingCartPaymentPage.getHeaderTextPayment()).contains("PLEASE CHOOSE YOUR PAYMENT METHOD");
+
 
     }
 
