@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class ShoppingCartAddressesPage {
     WebDriver driver;
@@ -73,6 +77,8 @@ public class ShoppingCartAddressesPage {
 
     @FindBy(css="#address_invoice > li:nth-child(7) > a:nth-child(1) > span:nth-child(1)")
     private WebElement updateYourBillingAddressButton;
+
+
 
     // Add new Address sendKeys
 
@@ -170,4 +176,6 @@ public class ShoppingCartAddressesPage {
         addressPageProceedButton.click();
         return  addressPageProceedButton;
     }
+
+
 }
