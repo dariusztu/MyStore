@@ -159,13 +159,14 @@ public class CartTest {
         cartObjectsObject.shoppingCartAddressesPage.addNewAddressHomePhoneFill("123456789");
         cartObjectsObject.shoppingCartAddressesPage.addNewAddressMobilePhoneFill("111222333");
         cartObjectsObject.shoppingCartAddressesPage.addressComment("razdwatrzy");
-        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressForFutureReferenceFill("ptwew1234");
+        String randomname1 = cartObjectsObject.shoppingCartAddressesPage.generateRandomName();
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressForFutureReferenceFill(randomname1);
 
         List<WebElement> errors = driver.findElements(By.cssSelector("form-error"));
         assertThat((errors).contains("form-error")).isFalse();
         cartObjectsObject.shoppingCartAddressesPage.acceptNewAddress();
 
-        assertThat(driver.getPageSource().contains("ptwew1234")).isTrue();
+        assertThat(driver.getPageSource().contains(randomname1)).isTrue();
 
 
 
