@@ -82,11 +82,9 @@ public class CartTest {
     public void passIfProceedToCheckOutOpen() {
         homePageObject = new HomePage(driver);
         cartObjectsObject = PageFactory.initElements(this.driver, CartObjectsPage.class);
-        shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
-
-        shoppingCartSummaryPageObject.goToPage();
-        assertThat(shoppingCartSummaryPageObject.addressTextGetText()).isEqualTo("03. Address");
-        assertThat(shoppingCartSummaryPageObject.addressTextButtonReturnColor()).isEqualTo("#000000");
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();
+        assertThat(cartObjectsObject.shoppingCartSummaryPage.addressTextGetText()).isEqualTo("03. Address");
+        assertThat(cartObjectsObject.shoppingCartSummaryPage.addressTextButtonReturnColor()).isEqualTo("#000000");
 
     }
 
@@ -161,11 +159,15 @@ public class CartTest {
         cartObjectsObject.shoppingCartAddressesPage.addNewAddressHomePhoneFill("123456789");
         cartObjectsObject.shoppingCartAddressesPage.addNewAddressMobilePhoneFill("111222333");
         cartObjectsObject.shoppingCartAddressesPage.addressComment("razdwatrzy");
-        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressForFutureReferenceFill("ptwew");
+        cartObjectsObject.shoppingCartAddressesPage.addNewAddressAddressForFutureReferenceFill("ptwew1234");
 
         List<WebElement> errors = driver.findElements(By.cssSelector("form-error"));
         assertThat((errors).contains("form-error")).isFalse();
         cartObjectsObject.shoppingCartAddressesPage.acceptNewAddress();
+
+        assertThat(driver.getPageSource().contains("ptwew1234")).isTrue();
+
+
 
 
     }
