@@ -73,7 +73,7 @@ public class CartTest {
     public void passIfTrueIfGoToCartIsSuccessfull() {
         homePageObject = new HomePage(driver);
         homePageObject.goToHomePage();
-        driver.findElement(By.cssSelector("#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")).click();
+        homePageObject.getHomePagecartButtonClick();
         assertThat(driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=order")).isTrue();
         assertThat((driver.getTitle()).equals("Order - My Store")).isTrue();
     }
@@ -93,6 +93,7 @@ public class CartTest {
     @Test
     public void passIfDeleteButtonIsClickable() {
         loginPagePageObject = new LoginPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
         sampleProductPageObject = new SampleProductPage(driver);
@@ -119,6 +120,7 @@ public class CartTest {
         addProductPopUpPageObject = new AddProductPopUpPage(driver);
         //Login
         loginPagePageObject = new LoginPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
         // Add random product to cart
         sampleProductPageObject.goToPage();
         sampleProductPageObject.addToCartButtonClick();
@@ -145,6 +147,7 @@ public class CartTest {
         shoppingCartSummaryPageObject = new ShoppingCartSummaryPage(driver);
         myAccountPageObject = new MyAccountPage(driver);
         loginPagePageObject = new LoginPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
         //Go to MyAddresses Page
         myAddressesPageObject.goToPage();
         myAddressesPageObject.addNewAddressButtonClick();
