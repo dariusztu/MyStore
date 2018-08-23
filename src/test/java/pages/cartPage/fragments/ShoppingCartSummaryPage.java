@@ -89,7 +89,7 @@ public class ShoppingCartSummaryPage {
         return backgroundColorHex;
     }
 
-    public WebElement checkIfdeleteButtonIsVisible(){
+    public WebElement checkIfdeleteButtonIsClickable(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement returnButtonCSS;
         returnButtonCSS = wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
