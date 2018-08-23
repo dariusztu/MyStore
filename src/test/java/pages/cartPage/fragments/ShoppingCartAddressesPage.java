@@ -145,8 +145,10 @@ public class ShoppingCartAddressesPage {
         return this.AddNewAddressAddressForFutureReference;
     }
 
-
-
+    public String generateRandomName () {
+        String randomname = Long.toHexString(Double.doubleToLongBits(Math.random()));
+        return randomname;
+    }
 
 
     public WebElement acceptNewAddress() {
