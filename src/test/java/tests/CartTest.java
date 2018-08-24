@@ -79,12 +79,32 @@ public class CartTest {
     }
 
     @Test
-    public void passIfProceedToCheckOutOpen() {
+    public void passIfProceedToAddressOutOpen() {
         homePageObject = new HomePage(driver);
-        cartObjectsObject = PageFactory.initElements(this.driver, CartObjectsPage.class);
+        cartObjectsObject = new CartObjectsPage(driver);
         cartObjectsObject.shoppingCartSummaryPage.goToPage();
-        assertThat(cartObjectsObject.shoppingCartSummaryPage.addressTextGetText()).isEqualTo("03. Address");
-        assertThat(cartObjectsObject.shoppingCartSummaryPage.addressTextButtonReturnColor()).isEqualTo("#000000");
+        assertThat(cartObjectsObject.addressTextGetText()).isEqualTo("03. Address");
+        assertThat(cartObjectsObject.addressTextButtonReturnColor()).isEqualTo("#000000");
+
+    }
+
+    @Test
+    public void passIfProceedToShippingSuccessful() {
+        cartObjectsObject = new CartObjectsPage(driver);
+        loginPagePageObject = new LoginPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
+        // Add random product to cart
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+        cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
+        assertThat(cartObjectsObject.shippingTextButtonGetText()).isEqualTo("04. Shipping");
+        assertThat(cartObjectsObject.shippingTextButtonReturnColor()).isEqualTo("#000000");
+
 
     }
 
