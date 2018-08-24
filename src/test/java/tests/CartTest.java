@@ -67,6 +67,18 @@ public class CartTest {
         CartTestsLogger.info("Closing ChromeDriver");
     }
 
+    public void loginAddProductToCartGoToSummaryPage() {
+        loginPagePageObject = new LoginPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
+        homePageObject = new HomePage(driver);
+        cartObjectsObject = new CartObjectsPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();
+    }
 
 
     @Test
@@ -90,16 +102,7 @@ public class CartTest {
 
     @Test
     public void passIfProceedToShippingSuccessful() {
-        cartObjectsObject = new CartObjectsPage(driver);
-        loginPagePageObject = new LoginPage(driver);
-        addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        sampleProductPageObject = new SampleProductPage(driver);
-        CartTestsLogger.info("Logging in using static login and password");
-        // Add random product to cart
-        sampleProductPageObject.goToPage();
-        sampleProductPageObject.addToCartButtonClick();
-        addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        cartObjectsObject.shoppingCartSummaryPage.goToPage();
+        loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
         assertThat(cartObjectsObject.shippingTextButtonGetText()).isEqualTo("04. Shipping");
@@ -110,16 +113,7 @@ public class CartTest {
 
     @Test
     public void passIfDeleteButtonIsClickable() {
-        loginPagePageObject = new LoginPage(driver);
-        CartTestsLogger.info("Logging in using static login and password");
-        homePageObject = new HomePage(driver);
-        cartObjectsObject = new CartObjectsPage(driver);
-        sampleProductPageObject = new SampleProductPage(driver);
-        addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        sampleProductPageObject.goToPage();
-        sampleProductPageObject.addToCartButtonClick();
-        addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        cartObjectsObject.shoppingCartSummaryPage.goToPage();
+        loginAddProductToCartGoToSummaryPage();
         assertThat(cartObjectsObject.shoppingCartSummaryPage.checkIfdeleteButtonIsClickable().isDisplayed()).isTrue();
 
 
@@ -129,19 +123,7 @@ public class CartTest {
 
     @Test
     public void passIfProductQuantityAddDeleteWorks() {
-        homePageObject = new HomePage(driver);
-        cartObjectsObject = new CartObjectsPage(driver);
-        sampleProductPageObject = new SampleProductPage(driver);
-        addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        //Login
-        loginPagePageObject = new LoginPage(driver);
-        CartTestsLogger.info("Logging in using static login and password");
-        // Add random product to cart
-        sampleProductPageObject.goToPage();
-        sampleProductPageObject.addToCartButtonClick();
-        addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        cartObjectsObject.shoppingCartSummaryPage.goToPage();
-
+        loginAddProductToCartGoToSummaryPage();
         int quantityBefore = cartObjectsObject.shoppingCartSummaryPage.checkProductQuantityInSummaryTab();
         cartObjectsObject.shoppingCartSummaryPage.addProductQuantityInSummaryTab();
         cartObjectsObject.refreshPage();
@@ -156,8 +138,6 @@ public class CartTest {
 
     @Test
     public void passIfIfDeliveryAddressAddProperly() {
-
-
         myAddressesPageObject = new MyAddressesPage(driver);
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
@@ -195,18 +175,7 @@ public class CartTest {
 
     @Test
     public void passIfTOSCheckedAbleToProceedToPayment() {
-
-        myAddressesPageObject = new MyAddressesPage(driver);
-        homePageObject = new HomePage(driver);
-        cartObjectsObject = new CartObjectsPage(driver);
-        loginPagePageObject = new LoginPage(driver);
-        sampleProductPageObject = new SampleProductPage(driver);
-        addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        CartTestsLogger.info("Logging in using static login and password");
-        sampleProductPageObject.goToPage();
-        sampleProductPageObject.addToCartButtonClick();
-        addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        cartObjectsObject.shoppingCartSummaryPage.goToPage();;
+        loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
         cartObjectsObject.shoppingCartShippingPage.acceptTermsOfServiceAtShippingTab();
@@ -219,17 +188,7 @@ public class CartTest {
 
     @Test
     public void passIfGoToPayByWireOpen(){
-        myAddressesPageObject = new MyAddressesPage(driver);
-        homePageObject = new HomePage(driver);
-        cartObjectsObject = new CartObjectsPage(driver);
-        loginPagePageObject = new LoginPage(driver);
-        sampleProductPageObject = new SampleProductPage(driver);
-        addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        CartTestsLogger.info("Logging in using static login and password");
-        sampleProductPageObject.goToPage();
-        sampleProductPageObject.addToCartButtonClick();
-        addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        cartObjectsObject.shoppingCartSummaryPage.goToPage();;
+        loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
         cartObjectsObject.shoppingCartShippingPage.acceptTermsOfServiceAtShippingTab();
@@ -241,17 +200,7 @@ public class CartTest {
 
     @Test
     public void passIfGoToPayByCheckOpen(){
-        myAddressesPageObject = new MyAddressesPage(driver);
-        homePageObject = new HomePage(driver);
-        cartObjectsObject = new CartObjectsPage(driver);
-        loginPagePageObject = new LoginPage(driver);
-        sampleProductPageObject = new SampleProductPage(driver);
-        addProductPopUpPageObject = new AddProductPopUpPage(driver);
-        CartTestsLogger.info("Logging in using static login and password");
-        sampleProductPageObject.goToPage();
-        sampleProductPageObject.addToCartButtonClick();
-        addProductPopUpPageObject.proceedToCheckoutButtonClick();
-        cartObjectsObject.shoppingCartSummaryPage.goToPage();;
+        loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
         cartObjectsObject.shoppingCartShippingPage.acceptTermsOfServiceAtShippingTab();
