@@ -22,13 +22,13 @@ public class ShoppingCartPaymentPage {
 
     }
 
-    @FindBy(css=".bankwire")
+    @FindBy(css = ".bankwire")
     private WebElement payByBankWire;
 
-    @FindBy(css=".cheque")
+    @FindBy(css = ".cheque")
     private WebElement payByCheck;
 
-    @FindBy(css=".page-heading")
+    @FindBy(css = ".page-heading")
     private WebElement headerTextPayment;
 
     public String getHeaderTextPayment() {

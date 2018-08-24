@@ -32,41 +32,39 @@ public class CartObjectsPage {
     // Switching between tabs
 
 
-    @FindBy(xpath="/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")
     private WebElement addressTextButton;
 
-    @FindBy(xpath="//*[@id=\"order_step\"]/li[2]/span")
+    @FindBy(xpath = "//*[@id=\"order_step\"]/li[2]/span")
     private WebElement signInTextButton;
 
-    @FindBy(xpath="//*[@id=\"order_step\"]/li[4]/span")
+    @FindBy(xpath = "//*[@id=\"order_step\"]/li[4]/span")
     private WebElement shippingTextButton;
 
     //Continue shopping
-    @FindBy(css=".button-exclusive")
+    @FindBy(css = ".button-exclusive")
     private WebElement continueShopping;
 
 
     //Address objects
 
-    @FindBy(css="#id_address_delivery")
+    @FindBy(css = "#id_address_delivery")
     private WebElement choosedeliveryaddress;
 
-    @FindBy(css="#addressesAreEquals")
+    @FindBy(css = "#addressesAreEquals")
     private WebElement useDeliveryAddressAsTheBillingAddress;
 
-    @FindBy(css="#address_delivery > li:nth-child(8) > a:nth-child(1) > span:nth-child(1)")
+    @FindBy(css = "#address_delivery > li:nth-child(8) > a:nth-child(1) > span:nth-child(1)")
     private WebElement updateYourDeliveryAddress;
 
-    @FindBy(css="#address_invoice > li:nth-child(8) > a:nth-child(1) > span:nth-child(1)")
+    @FindBy(css = "#address_invoice > li:nth-child(8) > a:nth-child(1) > span:nth-child(1)")
     private WebElement updateYourBillingAddress;
 
-    @FindBy(css=".address_add > a:nth-child(1) > span:nth-child(1)")
+    @FindBy(css = ".address_add > a:nth-child(1) > span:nth-child(1)")
     private WebElement addNewAddress;
 
-    @FindBy(css=".standard-checkout")
+    @FindBy(css = ".standard-checkout")
     private WebElement proceedtocheckoutbutton;
-
-
 
 
     public WebElement proceedtocheckoutbuttonClick() {
@@ -108,7 +106,7 @@ public class CartObjectsPage {
 
     }
 
-    public String shippingTextButtonGetText(){
+    public String shippingTextButtonGetText() {
         String shippingTextButtonText = shippingTextButton.getText();
         return shippingTextButtonText;
     }

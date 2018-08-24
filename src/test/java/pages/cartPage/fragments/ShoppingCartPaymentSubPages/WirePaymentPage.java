@@ -15,10 +15,10 @@ public class WirePaymentPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css=".page-subheading")
+    @FindBy(css = ".page-subheading")
     private WebElement headingTextBankWire;
 
-    public void goToPage(){
+    public void goToPage() {
         driver.get(url);
     }
 

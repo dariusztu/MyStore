@@ -23,7 +23,7 @@ public class YourAddress {
     @FindBy(css = ".account_creation:nth-child(2)  #address2")
     private WebElement address2;
 
-    @FindBy (css = ".account_creation:nth-child(2)  #city")
+    @FindBy(css = ".account_creation:nth-child(2)  #city")
     private WebElement city;
 
     @FindBy(css = ".account_creation:nth-child(2)  #uniform-id_state")
@@ -49,7 +49,6 @@ public class YourAddress {
 
     @FindBy(css = ".submit #submitAccount")
     private WebElement submitButton;
-
 
 
     public YourAddress(WebDriver driver) {

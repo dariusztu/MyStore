@@ -20,7 +20,7 @@ public class RegistrationPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css=".page-heading")
+    @FindBy(css = ".page-heading")
     private WebElement createAnAccountText;
 
     public String getCreateAnAccountText() {

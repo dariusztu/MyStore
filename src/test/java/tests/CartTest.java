@@ -36,6 +36,7 @@ public class CartTest {
     private SampleProductPage sampleProductPageObject;
     private WebDriver driver;
     private Logger CartTestsLogger = LogManager.getLogger(CartTest.class);
+
     @BeforeClass
     public static void pathSetup() {
         WebDriverManager.chromedriver().setup();
@@ -47,7 +48,7 @@ public class CartTest {
         driver = new ChromeDriver();
 
         CartTestsLogger.info("Setting up ChromeDriver on " + WebDriverManager.config().getOs() +
-        " " + WebDriverManager.config().getArchitecture());
+                " " + WebDriverManager.config().getArchitecture());
 
     }
 
@@ -117,7 +118,6 @@ public class CartTest {
         assertThat(cartObjectsObject.shoppingCartSummaryPage.checkIfdeleteButtonIsClickable().isDisplayed()).isTrue();
 
 
-
     }
 
 
@@ -168,8 +168,6 @@ public class CartTest {
         assertThat(driver.getPageSource().contains(randomname1)).isTrue();
 
 
-
-
     }
 
     @Test
@@ -186,7 +184,7 @@ public class CartTest {
     }
 
     @Test
-    public void passIfGoToPayByWireOpen(){
+    public void passIfGoToPayByWireOpen() {
         loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
@@ -198,7 +196,7 @@ public class CartTest {
     }
 
     @Test
-    public void passIfGoToPayByCheckOpen(){
+    public void passIfGoToPayByCheckOpen() {
         loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
@@ -208,7 +206,6 @@ public class CartTest {
         assertThat(cartObjectsObject.shoppingCartPaymentPage.checkPaymentPage.headingTextCheckPaymentGetText()).contains("CHECK PAYMENT");
 
     }
-
 
 
 }

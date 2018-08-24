@@ -15,10 +15,10 @@ public class CheckPaymentPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css=".page-subheading")
+    @FindBy(css = ".page-subheading")
     private WebElement headingTextCheckPayment;
 
-    public void goToPage(){
+    public void goToPage() {
         driver.get(url);
     }
 

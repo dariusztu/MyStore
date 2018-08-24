@@ -20,64 +20,63 @@ public class ShoppingCartAddressesPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css="textarea.form-control")
+    @FindBy(css = "textarea.form-control")
     private WebElement addressCommentForm;
 
     // Proceed different button
-    @FindBy(css="[type='submit'][name='processAddress']")
+    @FindBy(css = "[type='submit'][name='processAddress']")
     private WebElement addressPageProceedButton;
 
 
     // Add new address page
 
-    @FindBy(css="#firstname")
+    @FindBy(css = "#firstname")
     private WebElement AddNewAddressFirstName;
 
-    @FindBy(css="#lastname")
+    @FindBy(css = "#lastname")
     private WebElement AddNewAddressLastName;
 
-    @FindBy(css="#company")
+    @FindBy(css = "#company")
     private WebElement AddNewAddressCompany;
 
-    @FindBy(css="#address1")
+    @FindBy(css = "#address1")
     private WebElement AddNewAddressAddress;
 
-    @FindBy(css="#address2")
+    @FindBy(css = "#address2")
     private WebElement AddNewAddressAddressLine2;
 
-    @FindBy(css="#city  ")
+    @FindBy(css = "#city  ")
     private WebElement AddNewAddressCity;
 
-    @FindBy(css="#id_state")
+    @FindBy(css = "#id_state")
     private WebElement AddNewAddressState;
 
-    @FindBy(css="#postcode")
+    @FindBy(css = "#postcode")
     private WebElement AddNewAddressZipPostalCode;
 
-    @FindBy(css="#id_country")
+    @FindBy(css = "#id_country")
     private WebElement AddNewAddressCountry;
 
-    @FindBy(css="#phone")
+    @FindBy(css = "#phone")
     private WebElement AddNewAddressHomePhone;
 
-    @FindBy(css="#phone_mobile")
+    @FindBy(css = "#phone_mobile")
     private WebElement AddNewAddressMobilePhone;
 
-    @FindBy(css="#other")
+    @FindBy(css = "#other")
     private WebElement AddNewAddressAdditionalInformation;
 
-    @FindBy(css="#alias")
+    @FindBy(css = "#alias")
     private WebElement AddNewAddressAddressForFutureReference;
 
-    @FindBy(css="#submitAddress")
+    @FindBy(css = "#submitAddress")
     private WebElement saveButtonAtAddNewAddress;
 
-    @FindBy(css=".btn-defaul > span:nth-child(1)")
+    @FindBy(css = ".btn-defaul > span:nth-child(1)")
     private WebElement backToYourAddressesButton;
 
-    @FindBy(css="#address_invoice > li:nth-child(7) > a:nth-child(1) > span:nth-child(1)")
+    @FindBy(css = "#address_invoice > li:nth-child(7) > a:nth-child(1) > span:nth-child(1)")
     private WebElement updateYourBillingAddressButton;
-
 
 
     // Add new Address sendKeys
@@ -145,7 +144,7 @@ public class ShoppingCartAddressesPage {
         return this.AddNewAddressAddressForFutureReference;
     }
 
-    public String generateRandomName () {
+    public String generateRandomName() {
         String randomname = Long.toHexString(Double.doubleToLongBits(Math.random()));
         return randomname;
     }
@@ -174,9 +173,9 @@ public class ShoppingCartAddressesPage {
     }
 
     // Proceed button
-    public  WebElement addressPageProceedButtonClick() {
+    public WebElement addressPageProceedButtonClick() {
         addressPageProceedButton.click();
-        return  addressPageProceedButton;
+        return addressPageProceedButton;
     }
 
 

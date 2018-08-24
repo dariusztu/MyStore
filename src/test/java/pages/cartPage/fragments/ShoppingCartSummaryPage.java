@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShoppingCartSummaryPage {
 
-        private String url = "http://automationpractice.com/index.php?controller=order";
+    private String url = "http://automationpractice.com/index.php?controller=order";
     WebDriver driver;
 
     public ShoppingCartSummaryPage(WebDriver driver) {
@@ -25,31 +25,24 @@ public class ShoppingCartSummaryPage {
 
     //Summary
 
-    @FindBy(css=".cart_quantity_input")
+    @FindBy(css = ".cart_quantity_input")
     private WebElement productQuantityNumberInSummary;
 
-    @FindBy(css=".shopping_cart > a:nth-child(1)")
+    @FindBy(css = ".shopping_cart > a:nth-child(1)")
     private WebElement shoppingcartbutton;
 
-    @FindBy(css=".icon-minus")
+    @FindBy(css = ".icon-minus")
     private WebElement substractbutton;
 
-    @FindBy(css=".icon-plus")
+    @FindBy(css = ".icon-plus")
     private WebElement addbutton;
 
-    @FindBy(css=".icon-trash")
+    @FindBy(css = ".icon-trash")
     private WebElement deleteButton;
 
 
-
-
-
-    @FindBy(xpath="//*[@id=\"step_end\"]/span")
+    @FindBy(xpath = "//*[@id=\"step_end\"]/span")
     private WebElement inspectTextButton;
-
-
-
-
 
 
     public void inspectTextButtonClick() {
@@ -58,10 +51,7 @@ public class ShoppingCartSummaryPage {
     }
 
 
-
-
-
-    public WebElement checkIfdeleteButtonIsClickable(){
+    public WebElement checkIfdeleteButtonIsClickable() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement returnButtonCSS;
         returnButtonCSS = wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
@@ -84,7 +74,6 @@ public class ShoppingCartSummaryPage {
         this.addbutton.click();
         return this.addbutton;
     }
-
 
 
 }

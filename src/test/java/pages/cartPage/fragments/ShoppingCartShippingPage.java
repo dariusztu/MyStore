@@ -14,9 +14,9 @@ public class ShoppingCartShippingPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css="#cgv")
+    @FindBy(css = "#cgv")
     private WebElement termsOfServiceCheck;
-    @FindBy(css="#order_step > li.step_current.four > span")
+    @FindBy(css = "#order_step > li.step_current.four > span")
     private WebElement shippingTab;
 
 
