@@ -2,6 +2,7 @@ package pages.cartPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,17 +31,15 @@ public class CartObjectsPage {
 
     // Switching between tabs
 
-    @FindBy(css="li.step_done:nth-child(1) > a:nth-child(1)")
-    private WebElement summaryTab;
 
-    @FindBy(css="li.step_done:nth-child(2) > a:nth-child(1)")
-    private WebElement signInTab;
+    @FindBy(xpath="/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")
+    private WebElement addressTextButton;
 
-    @FindBy(css="li.step_done:nth-child(3) > a:nth-child(1)")
-    private WebElement addressTab;
+    @FindBy(xpath="//*[@id=\"order_step\"]/li[2]/span")
+    private WebElement signInTextButton;
 
-    @FindBy(css="li.step_done:nth-child(4) > a:nth-child(1)")
-    private WebElement shippingTab;
+    @FindBy(xpath="//*[@id=\"order_step\"]/li[4]/span")
+    private WebElement shippingTextButton;
 
     //Continue shopping
     @FindBy(css=".button-exclusive")
@@ -82,6 +81,42 @@ public class CartObjectsPage {
     public WebElement addNewAddress() {
         this.addNewAddress.click();
         return this.addNewAddress;
+    }
+
+    public String addressTextButtonReturnColor() {
+        String backgroundColor = addressTextButton.getCssValue("background-color");
+        String backgroundColorHex = Color.fromString(backgroundColor).asHex().toUpperCase();
+        return backgroundColorHex;
+    }
+
+    public String addressTextGetText() {
+        String addressTextString = addressTextButton.getText();
+        return addressTextString;
+    }
+
+    public void addressTextButtonClick() {
+        addressTextButton.click();
+
+    }
+
+    public void signInTextButtonClick() {
+        signInTextButton.click();
+    }
+
+    public void shippingTextButtonClick() {
+        shippingTextButton.click();
+
+    }
+
+    public String shippingTextButtonGetText(){
+        String shippingTextButtonText = shippingTextButton.getText();
+        return shippingTextButtonText;
+    }
+
+    public String shippingTextButtonReturnColor() {
+        String backgroundColor = shippingTextButton.getCssValue("background-color");
+        String backgroundColorHex = Color.fromString(backgroundColor).asHex().toUpperCase();
+        return backgroundColorHex;
     }
 
 }

@@ -16,10 +16,14 @@ public class ShoppingCartShippingPage {
 
     @FindBy(css="#cgv")
     private WebElement termsOfServiceCheck;
+    @FindBy(css="#order_step > li.step_current.four > span")
+    private WebElement shippingTab;
 
 
     public WebElement acceptTermsOfServiceAtShippingTab() {
         this.termsOfServiceCheck.click();
         return this.termsOfServiceCheck;
     }
+
+
 }

@@ -42,14 +42,7 @@ public class ShoppingCartSummaryPage {
 
 
 
-    @FindBy(xpath="/html/body/div/div[2]/div/div[3]/div/ul/li[3]/span")
-    private WebElement addressTextButton;
 
-    @FindBy(xpath="//*[@id=\"order_step\"]/li[2]/span")
-    private WebElement signInTextButton;
-
-    @FindBy(xpath="//*[@id=\"order_step\"]/li[4]/span")
-    private WebElement shippingTextButton;
 
     @FindBy(xpath="//*[@id=\"step_end\"]/span")
     private WebElement inspectTextButton;
@@ -57,24 +50,7 @@ public class ShoppingCartSummaryPage {
 
 
 
-    public String addressTextGetText() {
-        String addressTextString = addressTextButton.getText();
-        return addressTextString;
-    }
 
-    public void addressTextButtonClick() {
-        addressTextButton.click();
-
-    }
-
-    public void signInTextButtonClick() {
-        signInTextButton.click();
-    }
-
-    public void shippingTextButtonClick() {
-        shippingTextButton.click();
-
-    }
 
     public void inspectTextButtonClick() {
         inspectTextButton.click();
@@ -83,11 +59,7 @@ public class ShoppingCartSummaryPage {
 
 
 
-    public String addressTextButtonReturnColor() {
-        String backgroundColor = addressTextButton.getCssValue("background-color");
-        String backgroundColorHex = Color.fromString(backgroundColor).asHex().toUpperCase();
-        return backgroundColorHex;
-    }
+
 
     public WebElement checkIfdeleteButtonIsClickable(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
