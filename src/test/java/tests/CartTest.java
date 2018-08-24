@@ -194,7 +194,7 @@ public class CartTest {
     }
 
     @Test
-    public void passIfTOSCheckedAbleToProceed() {
+    public void passIfTOSCheckedAbleToProceedToPayment() {
 
         myAddressesPageObject = new MyAddressesPage(driver);
         homePageObject = new HomePage(driver);
@@ -216,6 +216,52 @@ public class CartTest {
 
 
     }
+
+    @Test
+    public void passIfGoToPayByWireOpen(){
+        myAddressesPageObject = new MyAddressesPage(driver);
+        homePageObject = new HomePage(driver);
+        cartObjectsObject = new CartObjectsPage(driver);
+        loginPagePageObject = new LoginPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();;
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+        cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
+        cartObjectsObject.shoppingCartShippingPage.acceptTermsOfServiceAtShippingTab();
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+        cartObjectsObject.shoppingCartPaymentPage.payByBankWireClick();
+        assertThat(cartObjectsObject.shoppingCartPaymentPage.wirePaymentPage.headingTextBankWireGetText()).contains("BANK-WIRE PAYMENT.");
+
+    }
+
+    @Test
+    public void passIfGoToPayByCheckOpen(){
+        myAddressesPageObject = new MyAddressesPage(driver);
+        homePageObject = new HomePage(driver);
+        cartObjectsObject = new CartObjectsPage(driver);
+        loginPagePageObject = new LoginPage(driver);
+        sampleProductPageObject = new SampleProductPage(driver);
+        addProductPopUpPageObject = new AddProductPopUpPage(driver);
+        CartTestsLogger.info("Logging in using static login and password");
+        sampleProductPageObject.goToPage();
+        sampleProductPageObject.addToCartButtonClick();
+        addProductPopUpPageObject.proceedToCheckoutButtonClick();
+        cartObjectsObject.shoppingCartSummaryPage.goToPage();;
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+        cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
+        cartObjectsObject.shoppingCartShippingPage.acceptTermsOfServiceAtShippingTab();
+        cartObjectsObject.proceedtocheckoutbuttonClick();
+        cartObjectsObject.shoppingCartPaymentPage.payByCheckClick();
+        assertThat(cartObjectsObject.shoppingCartPaymentPage.checkPaymentPage.headingTextCheckPaymentGetText()).contains("CHECK PAYMENT");
+
+    }
+
+
 
 }
 
