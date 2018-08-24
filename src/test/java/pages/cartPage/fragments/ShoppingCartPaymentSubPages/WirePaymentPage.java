@@ -1,6 +1,8 @@
 package pages.cartPage.fragments.ShoppingCartPaymentSubPages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class WirePaymentPage {
@@ -13,7 +15,15 @@ public class WirePaymentPage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css=".page-subheading")
+    private WebElement headingTextBankWire;
+
     public void goToPage(){
         driver.get(url);
+    }
+
+    public String headingTextBankWireGetText() {
+        String text = headingTextBankWire.getText();
+        return text;
     }
 }

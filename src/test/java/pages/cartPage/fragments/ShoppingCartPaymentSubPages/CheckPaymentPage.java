@@ -1,6 +1,8 @@
 package pages.cartPage.fragments.ShoppingCartPaymentSubPages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CheckPaymentPage {
@@ -13,7 +15,15 @@ public class CheckPaymentPage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css=".page-subheading")
+    private WebElement headingTextCheckPayment;
+
     public void goToPage(){
         driver.get(url);
+    }
+
+    public String headingTextCheckPaymentGetText() {
+        String text = headingTextCheckPayment.getText();
+        return text;
     }
 }
