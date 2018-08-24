@@ -124,7 +124,6 @@ public class CartTest {
     @Test
     public void passIfProductQuantityAddDeleteWorks() {
         loginAddProductToCartGoToSummaryPage();
-        int quantityBefore = cartObjectsObject.shoppingCartSummaryPage.checkProductQuantityInSummaryTab();
         cartObjectsObject.shoppingCartSummaryPage.addProductQuantityInSummaryTab();
         cartObjectsObject.refreshPage();
         //Assert that product quantity is as required
