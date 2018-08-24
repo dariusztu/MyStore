@@ -23,7 +23,7 @@ public class ShoppingCartPaymentPage {
     }
 
     @FindBy(css=".bankwire")
-    private WebElement tpayByBankWire;
+    private WebElement payByBankWire;
 
     @FindBy(css=".cheque")
     private WebElement payByCheck;
@@ -34,5 +34,15 @@ public class ShoppingCartPaymentPage {
     public String getHeaderTextPayment() {
         String headerTextPaymentText = headerTextPayment.getText();
         return headerTextPaymentText;
+    }
+
+    public WebElement payByBankWireClick() {
+        payByBankWire.click();
+        return payByBankWire;
+    }
+
+    public WebElement payByCheckClick() {
+        payByCheck.click();
+        return payByCheck;
     }
 }
