@@ -79,6 +79,9 @@ public class CartTest {
         sampleProductPageObject.addToCartButtonClick();
         addProductPopUpPageObject.proceedToCheckoutButtonClick();
         cartObjectsObject.shoppingCartSummaryPage.goToPage();
+        assertThat(cartObjectsObject.shoppingCartSummaryPage.giveUrl()).isEqualTo("http://automationpractice.com/index.php?controller=order");
+
+
     }
 
 
@@ -96,7 +99,7 @@ public class CartTest {
         homePageObject = new HomePage(driver);
         cartObjectsObject = new CartObjectsPage(driver);
         cartObjectsObject.shoppingCartSummaryPage.goToPage();
-        assertThat(cartObjectsObject.addressTextGetText()).isEqualTo("03. Address");
+        assertThat(cartObjectsObject.addressTextGetText()).isEqualTo("Address");
         assertThat(cartObjectsObject.addressTextButtonReturnColor()).isEqualTo("#000000");
 
     }
@@ -106,7 +109,7 @@ public class CartTest {
         loginAddProductToCartGoToSummaryPage();
         cartObjectsObject.proceedtocheckoutbuttonClick();
         cartObjectsObject.shoppingCartAddressesPage.addressPageProceedButtonClick();
-        assertThat(cartObjectsObject.shippingTextButtonGetText()).isEqualTo("04. Shipping");
+        assertThat(cartObjectsObject.shippingTextButtonGetText()).isEqualTo("Shipping");
         assertThat(cartObjectsObject.shippingTextButtonReturnColor()).isEqualTo("#000000");
 
 
