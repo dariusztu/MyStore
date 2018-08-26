@@ -9,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.ContactUsPage;
 import pages.FooterPage;
 import pages.HeaderPage;
@@ -49,13 +51,13 @@ public class SendContactUsFormTest {
         headerPage.getContactUsButton().click();
         contactUsPage.selectSubjectHeading(1);
         contactUsPage.insertEmailAdress("jac123@o2.pl");
-        contactUsPage.insertOrderReferenceNumber("1234");
-        contactUsPage.insertOrderReferenceNumber("55555555");
+        //contactUsPage.insertOrderReferenceNumber("1234");
+        //contactUsPage.insertOrderReferenceNumber("55555555");
         contactUsPage.insertTextToMessageField("sldkfmmlkmd kdslk ndsklfnsk lndskfn dskfdn");
         contactUsPage.pressSubmitButton();
 
         //assert checking that form was send correctly
-       assertEquals("Your message has been successfully sent to our team.",driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")));
+       assertEquals("Your message has been successfully sent to our team.",driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText());
 
 
     }
