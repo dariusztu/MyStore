@@ -117,9 +117,6 @@ public class CartObjectsPage {
         return backgroundColorHex;
     }
 
-    public String giveUrl() {
-        String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
-    }
+
 
 }
